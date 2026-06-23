@@ -72,8 +72,3 @@ flowchart LR
 4. Scouting features: `ScoutingNote` CRUD, per-player notes UI, and lightweight local persistence (IndexedDB) or server API.
 5. Watchlists & favorites: per-user lists stored in backend; UI components in `TeamDetails` and player profiles.
 6. Authentication & backend: small Express/Node or Firebase backend for persistence, with endpoints for players, notes, watchlists.
-
-If you'd like, I can:
-- wire a real Google Sheets / CSV loader
-- implement `PlayerTable` scaffold and sample player rows
-- add unit tests for `sheetParser`
