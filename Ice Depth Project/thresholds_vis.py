@@ -7,8 +7,7 @@ from scipy.interpolate import griddata
 from scipy.ndimage import gaussian_filter
 from matplotlib.patches import Circle
 
-# Change this to your CSV file path
-csv_path = "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Windigo_Ice_Depths_Unpivoted.csv"
+csv_path = "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Thresholds.csv"
 
 # Standard hockey rink size in feet
 L, W = 200, 85
@@ -36,36 +35,22 @@ point_locations = {
     14: (7, 42.5),
     15: (30, 42.5),
 }
-
 # =========================
 # LOAD CSV
 # =========================
 
 df = pd.read_csv(csv_path)
-df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
 df["Zone"] = pd.to_numeric(df["Zone"], errors="coerce")
-df["Depth"] = pd.to_numeric(df["Depth"], errors="coerce")
+df["PctBelow075"] = pd.to_numeric(df["PctBelow075"], errors="coerce")
+df["PctBelow100"] = pd.to_numeric(df["PctBelow100"], errors="coerce")
+df["PctBelow125"] = pd.to_numeric(df["PctBelow125"], errors="coerce")
 
-zone_avg = (
-    df.groupby("Zone")["Depth"]
-    .mean()
-    .reset_index()
-    .sort_values("Zone")
-)
-
-labels = zone_avg["Zone"].to_numpy(dtype=int)
-values = zone_avg["Depth"].to_numpy(dtype=float)
+labels = df["Zone"].to_numpy(dtype=int)
+values = df["PctBelow075"].to_numpy(dtype=float)
 
 xs = np.array([point_locations[i][0] for i in labels], dtype=float)
 ys = np.array([point_locations[i][1] for i in labels], dtype=float)
 
-start_date = df["Date"].min()
-end_date = df["Date"].max()
-date_label = (
-    f"{start_date.strftime('%Y-%m-%d')} "
-    f"to "
-    f"{end_date.strftime('%Y-%m-%d')}"
-)
 # =========================
 # DRAW RINK
 # =========================
@@ -250,11 +235,10 @@ for x, y, label, value in zip(xs, ys, labels, values):
         color=text_color,
         zorder=20
     )
-
 cbar = fig.colorbar(im, ax=ax, fraction=0.035, pad=0.025)
 cbar.set_label("Ice depth")
 
-ax.set_title(f"Windigo Average Ice Depth Heatmap — {date_label}", fontsize=16, pad=12)
+ax.set_title(f"Windigo Average Ice Depth Heatmap", fontsize=16, pad=12)
 
 plt.tight_layout()
 plt.show()

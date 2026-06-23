@@ -7,7 +7,7 @@ library(dplyr)
 library(readr)
 
 # Load your long-format ice depth data
-df <- read_csv("Windigo_Ice_Depths_Unpivoted.csv", show_col_types = FALSE)
+df <- read_csv("Ice Depth Project/Windigo_Ice_Depths_Unpivoted.csv", show_col_types = FALSE)
 
 # Ensure numeric
 df$Depth <- as.numeric(df$Depth)
@@ -22,4 +22,4 @@ thresholds <- df %>%
     )
 
 # Save output
-# write_csv(thresholds, "Thresholds.csv")
+write_csv(thresholds, "Thresholds.csv")
