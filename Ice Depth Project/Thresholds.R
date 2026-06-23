@@ -24,6 +24,6 @@ thresholds <- df %>%
 # Save output
 # write_csv(thresholds, "Thresholds.csv")
 
-plot(thresholds$Zone, thresholds$PctBelow125, type="1")
-lines(thresholds$Zone, thresholds$PctBelow100, type="1")
-lines(thresholds$Zone, thresholds$PctBelow075, type="1")
+plot(thresholds$Zone, thresholds$PctBelow125, type="b")
+lines(thresholds$Zone, thresholds$PctBelow100, type="b")
+lines(thresholds$Zone, thresholds$PctBelow075, type="b")
