@@ -7,7 +7,7 @@ from scipy.interpolate import griddata
 from scipy.ndimage import gaussian_filter
 from matplotlib.patches import Circle
 
-csv_path = "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Thresholds.csv"
+csv_path = "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Windigo_Ice_Depths_Unpivoted.csv"
 
 # Standard hockey rink size in feet
 L, W = 200, 85
@@ -39,14 +39,24 @@ point_locations = {
 # LOAD CSV
 # =========================
 
+
+
 df = pd.read_csv(csv_path)
 df["Zone"] = pd.to_numeric(df["Zone"], errors="coerce")
-df["PctBelow075"] = pd.to_numeric(df["PctBelow075"], errors="coerce")
-df["PctBelow100"] = pd.to_numeric(df["PctBelow100"], errors="coerce")
-df["PctBelow125"] = pd.to_numeric(df["PctBelow125"], errors="coerce")
+df["Depth"] = pd.to_numeric(df["Depth"], errors="coerce")
 
-labels = df["Zone"].to_numpy(dtype=int)
-values = df["PctBelow075"].to_numpy(dtype=float)
+thresholds = (
+    df.groupby("Zone")
+        .agg(
+            PctBelow075 = ("Depth", lambda x: (x < 0.75).mean() * 100),
+            PctBelow100 = ("Depth", lambda x: (x < 1.00).mean() * 100),
+            PctBelow125 = ("Depth", lambda x: (x < 1.25).mean() * 100)
+        )
+    .reset_index()
+)
+
+labels = thresholds["Zone"].to_numpy(dtype=int)
+values = thresholds["PctBelow075"].to_numpy(dtype=float)
 
 xs = np.array([point_locations[i][0] for i in labels], dtype=float)
 ys = np.array([point_locations[i][1] for i in labels], dtype=float)
