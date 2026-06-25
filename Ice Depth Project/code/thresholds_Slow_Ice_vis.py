@@ -7,8 +7,7 @@ from scipy.interpolate import griddata
 from scipy.ndimage import gaussian_filter
 from matplotlib.patches import Circle
 
-# Change this to your CSV file path
-csv_path = "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Windigo_Ice_Depths_Unpivoted.csv"
+csv_path = r"D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Windigo_Ice_Depths_Unpivoted.csv"
 
 # Standard hockey rink size in feet
 L, W = 200, 85
@@ -36,36 +35,39 @@ point_locations = {
     14: (7, 42.5),
     15: (30, 42.5),
 }
-
 # =========================
 # LOAD CSV
 # =========================
+
+
 
 df = pd.read_csv(csv_path)
 df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
 df["Zone"] = pd.to_numeric(df["Zone"], errors="coerce")
 df["Depth"] = pd.to_numeric(df["Depth"], errors="coerce")
+df = df.dropna(subset=["Zone", "Depth"])
 
-zone_avg = (
-    df.groupby("Zone")["Depth"]
-    .mean()
+
+
+selected_threshold = 1.6
+
+thresholds = (
+    df.groupby("Zone")
+        .agg(
+            PercentBelow = (
+                "Depth",
+                lambda x: (x > selected_threshold).mean() * 100
+            )
+        )
     .reset_index()
-    .sort_values("Zone")
 )
 
-labels = zone_avg["Zone"].to_numpy(dtype=int)
-values = zone_avg["Depth"].to_numpy(dtype=float)
+labels = thresholds["Zone"].to_numpy(dtype=int)
+values = thresholds["PercentBelow"].to_numpy(dtype=float)
 
 xs = np.array([point_locations[i][0] for i in labels], dtype=float)
 ys = np.array([point_locations[i][1] for i in labels], dtype=float)
 
-start_date = df["Date"].min()
-end_date = df["Date"].max()
-date_label = (
-    f"{start_date.strftime('%Y-%m-%d')} "
-    f"to "
-    f"{end_date.strftime('%Y-%m-%d')}"
-)
 # =========================
 # DRAW RINK
 # =========================
@@ -192,7 +194,7 @@ im = ax.imshow(
     origin="lower",
     alpha=0.72,
     aspect="equal",
-    cmap="Blues"
+    cmap="Purples"
 )
 
 rink_clip = rounded_rink_patch(
@@ -214,20 +216,38 @@ ax.scatter(xs, ys, s=110, edgecolors="black", linewidths=1.2)
 for x, y, label, value in zip(xs, ys, labels, values):
     circle = Circle(
         (x,y),
-        radius=6.5,
+        radius=7,
         facecolor="black",
         alpha=0.8,
         zorder=10
     )
     ax.add_patch(circle)
-    if value < 1.25:
-        text_color = "#ff0000"
-    elif value < 1.35:
-        text_color = "#ffd700"
-    elif value > 1.55:
-        text_color = "#00a2ff"
-    else:
-        text_color = "#00ff00"
+
+    threshold_colors = {
+        1.8: [
+            (5, "#ff0000"),
+            (2.5, "#ff9900"),
+            (1, "#ffd700"),
+        ],
+        1.7: [
+            (20, "#ff0000"),
+            (5, "#ff9900"),
+            (2, "#ffd700"),
+        ],
+        1.6: [
+            (40, "#ff0000"),
+            (20, "#ff9900"),
+            (2, "#ffd700"),
+        ]
+    }
+
+    text_color = "#00ff00"  # default green
+
+    for cutoff, color in threshold_colors[selected_threshold]:
+        if value > cutoff:
+            text_color = color
+            break
+    
     ax.text(
         x,
         y + 2,
@@ -242,7 +262,7 @@ for x, y, label, value in zip(xs, ys, labels, values):
     ax.text(
         x,
         y - 2,
-        f"{value:.2f}",
+        f"{value:.1f}%",
         ha="center",
         va="center",
         fontsize=14,
@@ -250,11 +270,13 @@ for x, y, label, value in zip(xs, ys, labels, values):
         color=text_color,
         zorder=20
     )
-
 cbar = fig.colorbar(im, ax=ax, fraction=0.035, pad=0.025)
-cbar.set_label("Ice depth")
+cbar.set_label("Slow Ice %")
 
-ax.set_title(f"Windigo Average Ice Depth Heatmap — {date_label}", fontsize=16, pad=12)
+start_date = df["Date"].min().strftime("%m/%d/%Y")
+end_date = df["Date"].max().strftime("%m/%d/%Y")
+
+ax.set_title(f"Windigo Slow Ice: % Above {selected_threshold}\" | {start_date} - {end_date}", fontsize=16, pad=12)
 
 plt.tight_layout()
 plt.show()
