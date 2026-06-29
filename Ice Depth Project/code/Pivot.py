@@ -1,13 +1,15 @@
 import requests
 import pandas as pd
-import csv
 from dotenv import load_dotenv
-from pathlib import Path
 import os
 
-load_dotenv(Path(__file__).parent / "D:/other-files/school/database_dev/Windigo Internship/HUBSPOT_KEY.env")
+
+load_dotenv(r"D:\other-files\school\database_dev\Windigo Internship\HUBSPOT_KEY.env")
 
 service_key = os.getenv("HUBSPOT_SERVICE_KEY")
+
+if not service_key:
+    raise ValueError("HUBSPOT_SERVICE_KEY was not loaded")
 
 url = "https://api.hubapi.com/crm/objects/2026-03/contacts"
 
@@ -20,34 +22,12 @@ response = requests.get(
     headers=headers
 )
 
-properties = [
-    "date",
-    "ice_depth_zone__1",
-    "ice_depth_zone__2",
-    "ice_depth_zone__3",
-    "ice_depth_zone__4",
-    "ice_depth_zone__5",
-    "ice_depth_zone__6",
-    "ice_depth_zone__7",
-    "ice_depth_zone__8",
-    "ice_depth_zone__9",
-    "ice_depth_zone__10",
-    "ice_depth_zone__11",
-    "ice_depth_zone__12",
-    "ice_depth_zone__13",
-    "ice_depth_zone__14",
-    "ice_depth_zone__15",
-    "ice_depth_zone__16"
-]
+properties = ["date"] + [f"ice_depth_zone__{i}" for i in range(1, 17)]
 
 params = {
-    "limit": 1,
+    "limit": 100,
     "properties": ",".join(properties)
 }
-
-r = requests.get(url, headers=headers, params=params)
-
-data = r.json()
 
 rows = []
 
@@ -56,13 +36,12 @@ while url:
     r.raise_for_status()
     data = r.json()
 
-    for item in data["results"]:
+    for item in data.get("results", []):
         row = item.get("properties", {})
-        row["id"] = item["id"]
+        row["id"] = item.get("id")
         rows.append(row)
 
-    paging = data.get("paging", {}).get("next", {})
-    url = paging.get("link")
+    url = data.get("paging", {}).get("next", {}).get("link")
     params = None
 
 df = pd.DataFrame(rows)
