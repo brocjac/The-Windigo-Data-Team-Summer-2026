@@ -1,8 +1,13 @@
 import requests
 import pandas as pd
 import csv
+from dotenv import load_dotenv
+from pathlib import Path
+import os
 
-service_key = "pat-na1-4e5c57aa-3722-4638-96d7-409b2dc8b7a4"
+load_dotenv(Path(__file__).parent / "D:/other-files/school/database_dev/Windigo Internship/HUBSPOT_KEY.env")
+
+service_key = os.getenv("HUBSPOT_SERVICE_KEY")
 
 url = "https://api.hubapi.com/crm/objects/2026-03/contacts"
 
@@ -36,7 +41,7 @@ properties = [
 ]
 
 params = {
-    "limit": 100,
+    "limit": 1,
     "properties": ",".join(properties)
 }
 
