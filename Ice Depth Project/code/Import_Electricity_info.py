@@ -24,6 +24,7 @@ response = requests.get(
 
 properties = [
     "electric_bill_date",
+    "electricity_read_date",
     "electric_billing_days",
     "offpeak_electricity_used_kwh",
     "onpeak_electricity_used_kwh",
@@ -79,6 +80,10 @@ df["electric_bill_date"] = pd.to_datetime(
     df["electric_bill_date"],
     errors="coerce"
 )
+df["electricity_read_date"] = pd.to_datetime(
+    df["electricity_read_date"],
+    errors="coerce"
+)
 
 col_numeric = [
     "electric_billing_days",
@@ -102,7 +107,7 @@ col_numeric = [
 for col in col_numeric :
     df[col] = pd.to_numeric(df[col], errors="coerce")
 
-df = df.rename(columns={"other_electricity_charges": "other_summary_charges"})
+df = df.rename(columns={"other_electricity_charges": "other_summary_electric_charges"})
 
 df["total_electric_charges"] = (
     df["on_peak_energy_charges"].fillna(0) +
@@ -113,12 +118,12 @@ df["total_electric_charges"] = (
     df["other_charges"].fillna(0) +
     df["electricity_taxes"].fillna(0)
 )
-df["total_bill"] = (
+df["total_electric_bill"] = (
     df["total_electric_charges"].fillna(0) +
-    df["other_summary_charges"].fillna(0) +
+    df["other_summary_electric_charges"].fillna(0) +
     df["previous_balance_and_adjustments"].fillna(0)
 )
-df["avg_cost_per_day"] = (
+df["avg_electric_cost_per_day"] = (
     df["total_electric_charges"].fillna(0) / df["electric_billing_days"].fillna(0)
 )
 df["electricity_used_kWh"] = (
@@ -128,5 +133,7 @@ df["electricity_used_kWh"] = (
 df["avg_kwh_per_day"] = (
     df["electricity_used_kWh"].fillna(0) / df["electric_billing_days"].fillna(0)
 )
-
+df["electric_start_date"] = (
+    df["electricity_read_date"] - pd.to_timedelta(df["electric_billing_days"], unit="D")
+)
 print(df.info())
