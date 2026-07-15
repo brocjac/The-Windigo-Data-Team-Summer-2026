@@ -1,0 +1,26 @@
+Windigo Energy Analysis
+Project Overview
+This repository contains the data and visualizations for the energy usage analysis at the Ponds. The primary objective of this project is to identify the correlation between climate variables and utility consumption (Electricity and Natural Gas) across distinct operational phases of the ice rink.
+
+Methodology Summary
+The analysis utilizes a multi-stage data processing pipeline:
+
+Data Integration: Raw energy and historical weather datasets were merged and time-aligned for consistency.
+
+Feature Engineering: Utility consumption was categorized into three distinct operational phases—High, Medium (Shoulder), and Low. These are based on facility activity schedules (Per Riley). 
+
+Correlation Analysis: Statistical relationships were calculated to determine the drivers of energy usage, separating weather-dependent usage from operationally-driven patterns.
+
+Repository Contents
+/data: Contains the finalized datasets (Windigo_Correlation_Matrix.csv) used to generate the analysis.
+
+Windigo Energy Usage with Weather.twbx: A packaged Tableau workbook containing the interactive heatmap and phase-filtering visualizations.
+
+Key Insights
+The analysis demonstrates that energy consumption patterns shift significantly based on the facility's phase:
+
+High Usage Phase (Sept – mid-March): Demonstrates strong correlation patterns tied to both operational intensity and weather.
+
+Medium Usage Phase (mid-March – May): Reflects transitional energy trends during shoulder-season operations.
+
+Low Usage Phase (June – Aug): Captures baseline facility energy usage during the off-season.
