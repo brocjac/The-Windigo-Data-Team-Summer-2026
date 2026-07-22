@@ -74,4 +74,6 @@ df_long = df_long.dropna(subset=["Depth"])
 
 df_long = df_long.rename(columns={"date": "Date"})
 
-print(df_long.info())
+
+
+print(df.info())
