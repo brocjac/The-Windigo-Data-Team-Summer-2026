@@ -419,13 +419,13 @@ regression_table_ice["Zone"] = (
 
 
 with pd.ExcelWriter("D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Correlation.xlsx", engine="openpyxl", mode="w") as writer:
-    regression_table_gas_usage.to_excel(writer, sheet_name="Gas Usage", index=False)
-    regression_table_gas_heating.to_excel(writer, sheet_name="Gas Heating Days", index=False)
-    regression_table_gas_cooling.to_excel(writer, sheet_name="Gas Cooling Days", index=False)
+    regression_table_gas_usage.to_excel(writer, sheet_name="NOAA and Meteo - Gas Usage", index=False)
+    regression_table_gas_heating.to_excel(writer, sheet_name="NOAA and Meteo - Gas Heating Days", index=False)
+    regression_table_gas_cooling.to_excel(writer, sheet_name="NOAA and Meteo - Gas Cooling Days", index=False)
 
-    regression_table_electric_onpeak.to_excel(writer, sheet_name="On-Peak", index=False)
-    regression_table_electric_offpeak.to_excel(writer, sheet_name="Off-Peak", index=False)
-    regression_table_electric_heating.to_excel(writer, sheet_name="Electric Heating Days", index=False)
-    regression_table_electric_cooling.to_excel(writer, sheet_name="Electric Cooling Days", index=False)
+    regression_table_electric_onpeak.to_excel(writer, sheet_name="NOAA and Meteo - On-Peak", index=False)
+    regression_table_electric_offpeak.to_excel(writer, sheet_name="NOAA and Meteo - Off-Peak", index=False)
+    regression_table_electric_heating.to_excel(writer, sheet_name="NOAA and Meteo - Electric Heating Days", index=False)
+    regression_table_electric_cooling.to_excel(writer, sheet_name="NOAA and Meteo - Electric Cooling Days", index=False)
 
     regression_table_ice.to_excel(writer, sheet_name="Ice Depth", index=False)
