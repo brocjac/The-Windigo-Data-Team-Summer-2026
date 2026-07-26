@@ -73,7 +73,6 @@ params = {
     "daily": [
         "temperature_2m_max",
         "temperature_2m_min",
-        "relative_humidity_2m_max",
         "relative_humidity_2m_mean",
         "dew_point_2m_mean"
     ],
