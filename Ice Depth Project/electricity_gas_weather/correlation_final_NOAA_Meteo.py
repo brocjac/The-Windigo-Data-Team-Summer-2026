@@ -1,7 +1,5 @@
-# %% [markdown]
-# ## Correlation of Weather Data and Gas, Electric and The Rink
+# Correlation of Weather Data and Gas, Electric and The Rink
 
-# %%
 import requests
 import pandas as pd
 from dotenv import load_dotenv

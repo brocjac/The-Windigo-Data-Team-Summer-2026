@@ -1,0 +1,11 @@
+Font Awesome Icons
+
+Forms - <i class="fa-brands fa-wpforms" style="color: rgb(255, 255, 255);"></i>
+Hockey Puck - <i class="fa-solid fa-hockey-puck" style="color: rgb(255, 255, 255);"></i>
+Hammer - <i class="fa-solid fa-hammer" style="color: rgb(255, 255, 255);"></i>
+Ice - <i class="fa-solid fa-icicles" style="color: rgb(255, 255, 255);"></i>
+Temp - <i class="fa-solid fa-temperature-full" style="color: rgb(255, 255, 255);"></i>
+Check Dollar - <i class="fa-solid fa-money-check-dollar" style="color: rgb(255, 255, 255);"></i>
+Fan / HVAC - <i class="fa-solid fa-fan" style="color: rgb(255, 255, 255);"></i>
+Zamboni Possible Look alike (Cart-Flatbed) - <i class="fa-solid fa-cart-flatbed" style="color: rgb(255, 255, 255);"></i>
+Calendar - <i class="fa-solid fa-calendar" style="color: rgb(255, 255, 255);"></i>
