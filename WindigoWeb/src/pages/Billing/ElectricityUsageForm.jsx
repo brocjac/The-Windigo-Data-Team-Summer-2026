@@ -3,7 +3,7 @@ import { FiSave, FiRotateCcw, FiX } from 'react-icons/fi'
 import FormCard from '../../components/FormCard'
 
 function ElectricityUsageForm() {
-  const [form, setForm] = useState({ billingMonth: '', meterReading: '', totalKwh: '', cost: '', utilityProvider: '', notes: '' })
+  const [form, setForm] = useState({ billingDate: '', readDate: '', meterReading: '', totalKwh: '', cost: '', utilityProvider: '', notes: '' })
   const [status, setStatus] = useState('')
 
   const handleSubmit = (event) => {
@@ -12,7 +12,7 @@ function ElectricityUsageForm() {
   }
 
   const handleReset = () => {
-    setForm({ billingMonth: '', meterReading: '', totalKwh: '', cost: '', utilityProvider: '', notes: '' })
+    setForm({ billingDate: '', readDate: '', meterReading: '', totalKwh: '', cost: '', utilityProvider: '', notes: '' })
     setStatus('Form reset.')
   }
 
@@ -27,8 +27,12 @@ function ElectricityUsageForm() {
       <FormCard title="Electricity usage entry" description="Record monthly utility consumption and spend.">
         <form className="form-grid" onSubmit={handleSubmit}>
           <label className="field">
-            <span>Billing Month</span>
-            <input type="month" value={form.billingMonth} onChange={(event) => setForm({ ...form, billingMonth: event.target.value })} />
+            <span>Billing Date</span>
+            <input type="date" value={form.billingDate} onChange={(event) => setForm({ ...form, billingDate: event.target.value })} />
+          </label>
+          <label className="field">
+            <span>Read Date</span>
+            <input type="date" value={form.readDate} onChange={(event) => setForm({ ...form, readDate: event.target.value })} />
           </label>
           <label className="field">
             <span>Meter Reading</span>
