@@ -1,0 +1,4 @@
+==================================
+Tunnel URL: https://windigoweb.loca.lt
+Forwarding localhost:5175 -> https://windigoweb.loca.lt
+==================================
