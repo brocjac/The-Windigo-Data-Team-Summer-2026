@@ -64,7 +64,6 @@ df_long = pd.melt(
 
 df_long["Zone"] = (
     df_long["Zone"]
-    .str.replace("ice_depth_zone__", "", regex=False)
     .astype(int)
 )
 
@@ -74,6 +73,6 @@ df_long = df_long.dropna(subset=["Depth"])
 
 df_long = df_long.rename(columns={"date": "Date"})
 
-
+df.to_csv('D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Windigo_Ice_Depths_pivoted.csv', index=False)
 
 print(df.info())

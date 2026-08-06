@@ -61,7 +61,7 @@ def classify_usage(date_val):
 # -----------------------------
 # Load CSV
 # -----------------------------
-df = pd.read_csv('Windigo_Ice_Depths.csv')
+df = pd.read_csv('D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Ponds Operations.csv')
 
 # Convert Date column to datetime
 df['Date'] = pd.to_datetime(df['Date'])
