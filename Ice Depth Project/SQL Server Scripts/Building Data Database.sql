@@ -16,14 +16,14 @@ CREATE TABLE [Worker] (
   CONSTRAINT Chk_Worker_Status CHECK (Account_Status IN ('pending', 'active', 'suspended', 'deleted'))
 );
 
-CREATE TABLE [Temp_Humidity] (
-  [Temp_Humidity_ID] Int NOT NULL identity(1,1),
-  [Temp_Humidity_Date] Date NOT NULL,
+CREATE TABLE [Rink_Temp_Humidity] (
+  [Rink_Temp_Humidity_ID] Int NOT NULL identity(1,1),
+  [Rink_Temp_Humidity_Date] Date NOT NULL,
   [Temperature] Int NOT NULL,
   [Humidity] Int NOT NULL,
   [Worker_ID] Int,
-  PRIMARY KEY ([Temp_Humidity_ID]),
-  CONSTRAINT [FK_Temp_Humidity_Worker_ID]
+  PRIMARY KEY ([Rink_Temp_Humidity_ID]),
+  CONSTRAINT [FK_Rink_Temp_Humidity_Worker_ID]
     FOREIGN KEY ([Worker_ID])
       REFERENCES [Worker]([Worker_ID])
 );
@@ -54,7 +54,7 @@ CREATE TABLE [Zamboni] (
   [Zamboni_ID] Int NOT NULL identity(1,1),
   [Zamboni] varchar(10) NOT NULL,
   PRIMARY KEY ([Zamboni_ID]),
-  CONSTRAINT Chk_Zam_Status check (Zamboni IN ('Boucher', 'Baxter', 'Quality'))
+  CONSTRAINT Chk_Zamboni_Zam_Status check (Zamboni IN ('Boucher', 'Baxter', 'Quality'))
 
 );
 
@@ -78,14 +78,17 @@ CREATE TABLE [Zam_Maintenance] (
 CREATE TABLE [Facility_HVAC_Filter] (
   [Facility_HVAC_Filter_ID] Int NOT NULL identity(1,1),
   [Facility_Change_Date] Date NOT NULL,
-  [20x25_Changed] bit,
-  [20x20_Changed] bit,
-  [16x22_Changed] bit,
-  [20x25_Inventory] Int,
-  [20x20_Inventory] Int,
-  [16x22_Inventory] Int,
+  [20x25_Changed] varchar(10) not null,
+  [20x20_Changed] varchar(10) not null,
+  [16x22_Changed] varchar(10) not null,
+  [20x25_Inventory] Int NOT NULL,
+  [20x20_Inventory] Int NOT NULL,
+  [16x22_Inventory] Int NOT NULL,
   [Notes] Varchar(15),
   [Worker_ID] Int,
+  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x25_Status check ([20x25_Changed] IN ('Yes', 'No', 'Not Operating')),
+  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Not Operating')),
+  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_16x22_Status check ([16x22_Changed] IN ('Yes', 'No', 'Not Operating')),
   PRIMARY KEY ([Facility_HVAC_Filter_ID]),
   CONSTRAINT [FK_Facility_HVAC_Filter_Worker_ID]
     FOREIGN KEY ([Worker_ID])
@@ -107,14 +110,17 @@ CREATE TABLE [Ice_Depth_Readings] (
 CREATE TABLE [Ice_Maintenance] (
   [Ice_Maintenance_ID] Int NOT NULL identity(1,1),
   [Ice_Maintenance_Date] Date NOT NULL,
-  [Edged] bit NOT NULL,
-  [Chipped] bit NOT NULL,
-  [Cross_Cut] bit NOT NULL,
-  [Hand_Flood] bit NOT NULL,
-  [Notes] Varchar(15),
+  [Edged] varchar(10) not null,
+  [Chipped] varchar(10) not null,
+  [Cross_Cut] varchar(10) not null,
+  [Hand_Flood] varchar(10) not null,
+  [Notes] Varchar(20),
   [Worker_ID] Int,
   PRIMARY KEY ([Ice_Maintenance_ID]),
-  CONSTRAINT Chk_Edged_Status check (Edged IN ('Yes', 'Corners')),
+  CONSTRAINT Chk_Ice_Maintenance_Edged_Status check (Edged IN ('Yes', 'Corners', 'NA')),
+  CONSTRAINT Chk_Ice_Maintenance_Chipped_Status check (Edged IN ('Yes', 'No', 'NA')),
+  CONSTRAINT Chk_Ice_Maintenance_Cross_Cut_Status check (Edged IN ('Yes', 'No', 'NA')),
+  CONSTRAINT Chk_Ice_Maintenance_Hand_Flood_Status check (Edged IN ('Yes', 'No', 'NA')),
   CONSTRAINT [FK_Ice_Maintenance_Worker_ID]
     FOREIGN KEY ([Worker_ID])
       REFERENCES [Worker]([Worker_ID])
@@ -123,14 +129,17 @@ CREATE TABLE [Ice_Maintenance] (
 CREATE TABLE [Rink_HVAC_Filter] (
   [Rink_HVAC_Filter_ID] Int NOT NULL identity(1,1),
   [Rink_Change_Date] Date NOT NULL,
-  [20x20_Changed] bit,
-  [24x24_Changed] bit,
-  [18x24_Changed] bit,
+  [20x20_Changed] Varchar(20),
+  [24x24_Changed] Varchar(20),
+  [18x24_Changed] Varchar(20),
   [20x20_Inventory] Int,
   [24x24_Inventory] Int,
   [18x24_Inventory] Int,
   [Notes] Varchar(15),
   [Worker_ID] Int,
+  CONSTRAINT Chk_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Not Operating')),
+  CONSTRAINT Chk_24x24_Status check ([24x24_Changed] IN ('Yes', 'No', 'Not Operating')),
+  CONSTRAINT Chk_18x24_Status check ([18x24_Changed] IN ('Yes', 'No', 'Not Operating')),
   PRIMARY KEY ([Rink_HVAC_Filter_ID]),
   CONSTRAINT [FK_Rink_HVAC_Filter_Worker_ID]
     FOREIGN KEY ([Worker_ID])
@@ -140,8 +149,8 @@ CREATE TABLE [Rink_HVAC_Filter] (
 CREATE TABLE [Rink_Misc_Maintenance] (
   [Rink_Misc_Maintenance_ID] Int NOT NULL identity(1,1),
   [Rink_Misc_Maintenance_Date] Date NOT NULL,
-  [Task] Varchar(20),
-  [Notes] Varchar(20),
+  [Task] Varchar(35),
+  [Notes] Varchar(45),
   [Worker_ID] Int,
   PRIMARY KEY ([Rink_Misc_Maintenance_ID]),
   CONSTRAINT [FK_Rink_Misc_Maintenance_Worker_ID]
@@ -149,27 +158,25 @@ CREATE TABLE [Rink_Misc_Maintenance] (
       REFERENCES [Worker]([Worker_ID])
 );
 
-/*CREATE TABLE [Glycol_Machine] (
+CREATE TABLE [Glycol_Machine] (
   [Glycol_Machine_ID] Int NOT NULL identity(1,1),
   [Glycol_Machine_Date] Date NOT NULL,
-  [Before_Pressure_Low_Threshold_PSI] Int,
-  [Before_Pressure_High_Threshold_PSI] Int,
-  [Before_Pressure_Operating_PSI] Int,
-  [Before_Measure_Line] Char(7),
-  [After_Pressure_Low_Threshold_PSI] Int,
-  [After_Pressure_High_Threshold_PSI] Int,
-  [After_Pressure_Operating_PSI] Int,
-  [After_Measure_Line] Char(7),
-  [Gallons_Added] Int,
-  [Notes] Varchar(25),
+  [Before_Pressure_Return_PSI] Int Not NUll,
+  [Before_Pressure_Out_PSI] Int Not NUll,
+  [Before_Measure_Line] Char(7) Not NUll,
+  [After_Pressure_Return_PSI] Int Not NUll,
+  [After_Pressure_Out_PSI] Int Not NUll,
+  [After_Measure_Line] Char(7) Not NUll,
+  [Gallons_Added] Int Not NUll,
+  [Notes] Varchar(50),
   [Worker_ID] Int,
   PRIMARY KEY ([Glycol_Machine_ID]),
-  CONSTRAINT Chk_Before_Status check (Edged IN ('Above', 'Below', 'At')),
-  CONSTRAINT Chk_After_Status check (Edged IN ('Above', 'Below', 'At')),
+  CONSTRAINT Chk_Before_Status check ([Before_Measure_Line] IN ('Above', 'Below', 'At')),
+  CONSTRAINT Chk_After_Status check ([After_Measure_Line] IN ('Above', 'Below', 'At')),
   CONSTRAINT [FK_Glycol_Machine_Worker_ID]
     FOREIGN KEY ([Worker_ID])
       REFERENCES [Worker]([Worker_ID])
-);*/
+);
 
 CREATE TABLE [Electricity_Stats] (
   [Electricity_Stats_ID] Int NOT NULL identity(1,1),
@@ -188,6 +195,7 @@ CREATE TABLE [Electricity_Stats] (
   [On_Peak_Energy_Usage_kWh] Int NOT NULL,
   [Off_Peak_Energy_Usage_kWh] Int NOT NULL,
   [System_Demand_kW] Int NOT NULL,
+  [Customer_Demand_kW] int NOT NULL,
   [Electricity_Heating_Degree_Days] Int NOT NULL,
   [Electricity_Cooling_Degree_Days] Int NOT NULL,
   [Worker_ID] Int,

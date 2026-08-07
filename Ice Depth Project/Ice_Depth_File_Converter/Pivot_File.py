@@ -27,6 +27,6 @@ df_long["Depth"] = pd.to_numeric(df_long["Depth"], errors="coerce")
 
 df_long = df_long.dropna(subset=["Depth"])
 
-df.to_csv('D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Windigo_Ice_Depths_Pivot.csv', index=False)
+df_long.to_csv('D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Windigo_Ice_Depths_Pivot.csv', index=False)
 
 print(df_long.info())

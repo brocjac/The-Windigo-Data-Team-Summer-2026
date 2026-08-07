@@ -30,7 +30,11 @@ try:
 except Exception as e:
     print("Connection failed:", e)
 
+params = urllib.parse.quote_plus(conn_str)
+engine = create_engine(f"mssql+pyodbc:///?odbc_connect={params}")
+
 df = pd.read_csv("D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Windigo_Ice_Depths_Pivot.csv")
+print("Actual CSV Columns:", df.columns.tolist())
 
 df = df.rename(
     columns={
@@ -40,3 +44,12 @@ df = df.rename(
     }
 )
 
+target_columns = ["Reading_Date", "Zone_ID", "Ice_Depth"]
+
+df = df[target_columns]
+
+target_table = "Ice_Depth_Readings"
+
+df.to_sql(name=target_table, con=engine, if_exists="append", index=False)
+
+print("Specified data successfully inserted!")
