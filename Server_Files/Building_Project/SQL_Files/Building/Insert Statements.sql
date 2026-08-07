@@ -76,3 +76,5 @@ FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'Rink_Temp_Humidity';
 
 select * from Electricity_Stats
+
+truncate table Ice_Depth_Readings

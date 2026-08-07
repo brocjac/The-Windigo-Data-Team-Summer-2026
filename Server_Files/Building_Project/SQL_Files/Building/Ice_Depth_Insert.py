@@ -44,11 +44,14 @@ df = df.rename(
     }
 )
 
+df["Reading_Date"] = pd.to_datetime(df["Reading_Date"])
+
 target_columns = ["Reading_Date", "Zone_ID", "Ice_Depth"]
 
 df = df[target_columns]
 
 target_table = "Ice_Depth_Readings"
+df.sort_values(by="Reading_Date", ascending=True)
 
 df.to_sql(name=target_table, con=engine, if_exists="append", index=False)
 
