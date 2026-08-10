@@ -1,4 +1,7 @@
-USE Windigo_Hockey_Rating_System;
+go
+create database Windigo_Hockey_Rating_System_DB
+go
+USE Windigo_Hockey_Rating_System_DB;
 -- ===============================
 -- Windigo Hockey Database Schema 
 -- ===============================
@@ -60,7 +63,7 @@ CREATE TABLE PLAYERS (
 -- 5. ROSTER (Historical team assignments)
 -- =======================================
 CREATE TABLE ROSTER (
-    roster_id INT NOT NULL,
+    roster_id INT NOT NULL identity(1,1),
     player_id INT NOT NULL,
     team_id INT NOT NULL,
     start_date DATE NOT NULL,
@@ -76,7 +79,7 @@ CREATE TABLE ROSTER (
 -- 6. GAMES
 -- ===========
 CREATE TABLE GAMES (
-    game_id INT NOT NULL,
+    game_id INT NOT NULL identity(1,1),
     season_id INT NOT NULL,
     date DATETIME NOT NULL,
     home_team_id INT NOT NULL,

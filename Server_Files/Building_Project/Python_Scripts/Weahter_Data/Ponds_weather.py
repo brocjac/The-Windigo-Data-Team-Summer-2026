@@ -1,55 +1,101 @@
+import os
+from pathlib import Path
+import pandas as pd
+from urllib.parse import quote_plus
+
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
+from sqlalchemy.exc import SQLAlchemyError
+
+
 import openmeteo_requests
 import pandas as pd
 import requests_cache
 from retry_requests import retry
 from dotenv import load_dotenv
 import requests
-import os
-from sqlalchemy import create_engine, text
-from urllib.parse import quote_plus
 # ---------------------------------------------------------
 # 1. Hubspot From start and end of Electricity and Gas Billing
 # ---------------------------------------------------------
-SERVER = os.getenv("DB_SERVER", r"192.168.1.48\WINDIGODATABASE,1433")
-DATABASE = os.getenv("DB_NAME", "The_Ponds_Building_DB")
+env_path = Path(__file__).resolve().parents[3] / ".env"
 
-conn_str = f"DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};Trusted_Connection=yes;Encrypt=yes;TrustServerCertificate=yes;"
-encoded_conn_str = quote_plus(conn_str)
+print("Looking for .env at:", env_path)
+print("Exists:", env_path.exists())
 
-engine = create_engine(f"mssql+pyodbc:///?odbc_connect={encoded_conn_str}")
+load_dotenv(env_path)
 
-gas_df["gas_read_date"] = pd.to_datetime(
-    gas_df["gas_read_date"],
+server = os.getenv("DB_SERVER")
+database = os.getenv("DB_NAME")
+username = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
+driver = os.getenv("DB_DRIVER")
+
+odbc_connection = (
+    f"DRIVER={{{driver}}};"
+    f"SERVER={server};"
+    f"DATABASE={database};"
+    f"UID={username};"
+    f"PWD={password};"
+    "Encrypt=yes;"
+    "TrustServerCertificate=yes;"
+)
+
+connection_url = (
+    "mssql+pyodbc:///?odbc_connect="
+    + quote_plus(odbc_connection)
+)
+
+engine = create_engine(
+    connection_url,
+    pool_pre_ping=True
+)
+
+query = text("""select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats""")
+
+with engine.connect() as connection:
+    electric_df = pd.read_sql(query, connection)
+
+print(electric_df.head())
+
+query = text("""select Natural_Gas_Read_Date, Natural_Gas_Billing_Days from Natural_Gas_Stats""")
+
+with engine.connect() as connection:
+    gas_df = pd.read_sql(query, connection)
+
+print(gas_df.head())
+
+gas_df["Natural_Gas_Read_Date"] = pd.to_datetime(
+    gas_df["Natural_Gas_Read_Date"],
     errors="coerce"
 )
 
-gas_df["gas_billing_days"] = pd.to_numeric(
-    gas_df["gas_billing_days"],
+gas_df["Natural_Gas_Billing_Days"] = pd.to_numeric(
+    gas_df["Natural_Gas_Billing_Days"],
     errors="coerce"
 )
 
-electric_df["electricity_read_date"] = pd.to_datetime(
-    electric_df["electricity_read_date"],
+electric_df["Electricity_Read_Date"] = pd.to_datetime(
+    electric_df["Electricity_Read_Date"],
     errors="coerce"
 )
 
-electric_df["electric_billing_days"] = pd.to_numeric(
-    electric_df["electric_billing_days"],
+electric_df["Electricity_Billing_Days"] = pd.to_numeric(
+    electric_df["Electricity_Billing_Days"],
     errors="coerce"
 )
 
 gas_df["gas_start_date"] = (
-    gas_df["gas_read_date"]
+    gas_df["Natural_Gas_Read_Date"]
     - pd.to_timedelta(
-        gas_df["gas_billing_days"] - 1,
+        gas_df["Natural_Gas_Billing_Days"] - 1,
         unit="D"
     )
 )
 
 electric_df["electricity_start_date"] = (
-    electric_df["electricity_read_date"]
+    electric_df["Electricity_Read_Date"]
     - pd.to_timedelta(
-        electric_df["electric_billing_days"] - 1,
+        electric_df["Electricity_Billing_Days"] - 1,
         unit="D"
     )
 )
@@ -60,8 +106,8 @@ absolute_start = min(
 )
 
 absolute_end = max(
-    gas_df["gas_read_date"].max(),
-    electric_df["electricity_read_date"].max()
+    gas_df["Natural_Gas_Read_Date"].max(),
+    electric_df["Electricity_Read_Date"].max()
 )
 
 start_date = pd.to_datetime(absolute_start).strftime("%Y-%m-%d")
