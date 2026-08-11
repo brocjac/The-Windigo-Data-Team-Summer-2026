@@ -64,6 +64,7 @@ CREATE TABLE [Zam_Maintenance] (
   [Maintenance_Done] Varchar(20) NOT NULL,
   [Notes] Varchar(15),
   [Blade_Inventory] Int NOT NULL,
+  [Blade_Width] Decimal(5,4),
   [Zamboni_ID] Int,
   [Worker_ID] Int,
   PRIMARY KEY ([Zam_Maintenance_ID]),
@@ -210,9 +211,26 @@ CREATE TABLE [Zam_Schedule] (
   [Zam_Schedule_Date] Date NOT NULL,
   [Notes] Varchar(15),
   [Zamboni_ID] Int,
+  [Worker_ID] Int
   PRIMARY KEY ([Zam_Schedule_ID]),
   CONSTRAINT [FK_Zam_Schedule_Zamboni_ID]
     FOREIGN KEY ([Zamboni_ID])
-      REFERENCES [Zamboni]([Zamboni_ID])
+      REFERENCES [Zamboni]([Zamboni_ID]),
+  CONSTRAINT [FK_Zam_Schedule_Worker_ID]
+    FOREIGN KEY ([Worker_ID])
+      REFERENCES [Worker]([Worker_ID])
 );
 
+CREATE TABLE Ponds_Weather_Meteo (
+    Ponds_Weather_ID INT IDENTITY(1,1) PRIMARY KEY,
+
+    Ponds_Weather_Date DATE NOT NULL,
+
+    Max_Temperature DECIMAL(6,2),
+    Min_Temperature DECIMAL(6,2),
+    Avg_Relative_Humidity DECIMAL(5,2),
+    Avg_Dew_Point DECIMAL(6,2),
+
+    CONSTRAINT UQ_Ponds_Weather_Meteo_Date
+        UNIQUE (Ponds_Weather_Date)
+);

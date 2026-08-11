@@ -1,22 +1,19 @@
 import os
 from pathlib import Path
-import pandas as pd
 from urllib.parse import quote_plus
 
-from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
-from sqlalchemy.exc import SQLAlchemyError
-
-
-import openmeteo_requests
 import pandas as pd
-import requests_cache
-from retry_requests import retry
-from dotenv import load_dotenv
 import requests
+import openmeteo_requests
+
+from dotenv import load_dotenv
+from retry_requests import retry
+from sqlalchemy import create_engine, text
+
 # ---------------------------------------------------------
 # 1. Hubspot From start and end of Electricity and Gas Billing
 # ---------------------------------------------------------
+
 env_path = Path(__file__).resolve().parents[3] / ".env"
 
 print("Looking for .env at:", env_path)
@@ -29,6 +26,24 @@ database = os.getenv("DB_NAME")
 username = os.getenv("DB_USER")
 password = os.getenv("DB_PASSWORD")
 driver = os.getenv("DB_DRIVER")
+
+required_env = {
+    "DB_SERVER": server,
+    "DB_NAME": database,
+    "DB_USER": username,
+    "DB_PASSWORD": password,
+    "DB_DRIVER": driver
+}
+
+missing = [
+    name for name, value in required_env.items()
+    if not value
+]
+
+if missing:
+    raise RuntimeError(
+        f"Missing environment variables: {', '.join(missing)}"
+    )
 
 odbc_connection = (
     f"DRIVER={{{driver}}};"
@@ -50,19 +65,30 @@ engine = create_engine(
     pool_pre_ping=True
 )
 
-query = text("""select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats""")
+electric_query = text("""select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats""")
+
+gas_query = text("""select Natural_Gas_Read_Date, Natural_Gas_Billing_Days from Natural_Gas_Stats""")
 
 with engine.connect() as connection:
-    electric_df = pd.read_sql(query, connection)
+    electric_df = pd.read_sql(electric_query, connection)
+    gas_df = pd.read_sql(gas_query, connection)
 
-print(electric_df.head())
+gas_df = gas_df.dropna(
+    subset=[
+        "Natural_Gas_Read_Date",
+        "Natural_Gas_Billing_Days"
+    ]
+)
 
-query = text("""select Natural_Gas_Read_Date, Natural_Gas_Billing_Days from Natural_Gas_Stats""")
-
-with engine.connect() as connection:
-    gas_df = pd.read_sql(query, connection)
+electric_df = electric_df.dropna(
+    subset=[
+        "Electricity_Read_Date",
+        "Electricity_Billing_Days"
+    ]
+)
 
 print(gas_df.head())
+print(electric_df.head())
 
 gas_df["Natural_Gas_Read_Date"] = pd.to_datetime(
     gas_df["Natural_Gas_Read_Date"],
@@ -110,6 +136,12 @@ absolute_end = max(
     electric_df["Electricity_Read_Date"].max()
 )
 
+if gas_df.empty:
+    raise ValueError("Natural_Gas_Stats returned no records.")
+
+if electric_df.empty:
+    raise ValueError("Electricity_Stats returned no records.")
+
 start_date = pd.to_datetime(absolute_start).strftime("%Y-%m-%d")
 end_date = pd.to_datetime(absolute_end).strftime("%Y-%m-%d")
 
@@ -127,9 +159,17 @@ print(f"Longitude: {PONDS_LON}\n")
 # ---------------------------------------------------------
 # 3. SETUP OPEN-METEO CLIENT
 # ---------------------------------------------------------
-cache_session = requests_cache.CachedSession('.cache', expire_after=3600)
-retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
-openmeteo = openmeteo_requests.Client(session=retry_session)
+session = requests.Session()
+
+retry_session = retry(
+    session,
+    retries=5,
+    backoff_factor=0.2
+)
+
+openmeteo = openmeteo_requests.Client(
+    session=retry_session
+)
 
 # ---------------------------------------------------------
 # 4. API REQUEST PARAMETERS
@@ -185,10 +225,48 @@ daily_data = {
 daily_dataframe = pd.DataFrame(data=daily_data)
 
 # Strip time → keep only YYYY-MM-DD
-daily_dataframe["date"] = pd.to_datetime(daily_dataframe["date"]).dt.date
+daily_dataframe["date"] = pd.to_datetime(daily_dataframe["date"])
 
 # ---------------------------------------------------------
 # 7. Print
 # ---------------------------------------------------------
-#print(daily_dataframe)
+print(daily_dataframe.info())
 print(start_date, end_date)
+
+daily_dataframe = daily_dataframe.rename(
+    columns={
+        "date": "Ponds_Weather_Date",
+        "temp_max": "Max_Temperature",
+        "temp_min": "Min_Temperature",
+        "rh_mean": "Avg_Relative_Humidity",
+        "dew_point_mean": "Avg_Dew_Point"
+    }
+)
+
+col_numeric = [
+    "Max_Temperature",
+    "Min_Temperature",
+    "Avg_Relative_Humidity",
+    "Avg_Dew_Point"
+]
+
+daily_dataframe[col_numeric] = (daily_dataframe[col_numeric].astype("float64").round(2))
+
+
+target_columns = [
+    "Ponds_Weather_Date",
+    "Max_Temperature",
+    "Min_Temperature",
+    "Avg_Relative_Humidity",
+    "Avg_Dew_Point"
+]
+
+daily_dataframe["Ponds_Weather_Date"] = (
+    pd.to_datetime(daily_dataframe["Ponds_Weather_Date"])
+    .dt.date
+)
+
+target_table = "Ponds_Weather_Meteo"
+
+daily_dataframe.to_sql(name=target_table, con=engine, if_exists="append", index=False)
+print("Specified data successfully inserted!")
