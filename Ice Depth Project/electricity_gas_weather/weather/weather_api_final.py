@@ -129,4 +129,4 @@ weather_df = weather_df.rename(
     }
 )
 
-weather_df
+print(weather_df)
