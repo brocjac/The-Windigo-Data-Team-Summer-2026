@@ -1,0 +1,660 @@
+#,Player Name,Pos.,GP,G,A,Pts,PIM,#ERROR!,GP,G,A,Pts,PIM,Birthplace,Age
+1,Cooper Simpson,L,61,34,40,74,68,5,4,1,2,3,0,MN: Shakopee,18
+2,Ryan Rucinski,C,59,27,35,62,88,11,4,1,1,2,4,OH: Broadview Heights,18
+3,Evan Jardine,L,53,27,34,61,70,12,4,1,2,3,2,MI: Bloomfield Hills,17
+4,Jack Hextall,C,59,20,38,58,28,8,4,1,1,2,0,IL: Arlington Heights,17
+5,Malachi McKinnon,F,61,25,25,50,14,22,4,0,0,0,2,MN: Forest Lake,18
+6,Jack Willson,D,57,12,35,47,29,6,4,0,1,1,0,MI: Northville,20
+7,Carter Murphy,D,62,6,37,43,30,22,4,0,0,0,2,TX: The Woodands,18
+8,Jakub Hes,F,58,11,17,28,14,20,4,0,0,0,0,Czechia: Zlin,18
+9,Kazumo Sasaki,L,39,9,15,24,63,15,4,0,0,0,4,Japan: Nishitokyo,19
+10,Logan Anderson,F,59,5,12,17,57,4,4,0,1,1,0,FL: Fort Myers,16
+11,Cal Huston,D,53,2,15,17,45,12,4,0,0,0,0,OH: Youngstown,20
+12,Matous Kucharcik,C,35,9,7,16,18,6,4,1,1,2,0,Italy: Vipiteno,18
+13,Richard Zemlicka,C,29,6,6,12,72,1,4,1,0,1,4,Czech Rep.: Prague,19
+14,Matej Teply 1,D,29,4,6,10,29,17,4,0,2,2,2,CT: Stamford,20
+15,Alexander Svitov,F,49,2,8,10,34,4,4,0,0,0,2,FL: Miramar,16
+16,Brayden Thompson,D,54,2,8,10,14,-2,--,--,--,--,--,MAN: Winnipeg,17
+17,Matvey Butkovskiy,L,21,3,6,9,6,9,--,--,--,--,--,Russia: Petroskoi,19
+18,Sean Miller,F,46,3,6,9,4,0,--,--,--,--,--,PA: Pittsburgh,16
+19,Jack Hamilton,D,49,1,8,9,29,13,4,0,0,0,0,OH: Powell,19
+20,Lenny Boos,F,19,5,3,8,0,3,4,0,0,0,0,Germany: Cologne,18
+21,Brody Berard,D,45,1,6,7,72,8,1,0,0,0,0,RI: Cumberland,15
+22,Jesse Orlowsky,F,45,4,2,6,23,5,3,0,0,0,2,NY: Brooklyn,18
+23,Jayden Veney,D,27,2,4,6,31,10,--,--,--,--,--,MN: Rochester,20
+24,Kyle O'Leary 2,F,24,2,3,5,4,4,--,--,--,--,--,MA: Medfield,19
+25,Ryan Whiterabbit 3,D,17,0,5,5,6,6,4,0,0,0,0,MN: Mahtomedi,19
+26,Tobias Trejbal,G,42,0,5,5,0,0,4,0,0,0,0,Czechia: Most,17
+27,Melker Morin 4,D,17,0,2,2,12,-2,--,--,--,--,--,Sweden: Stockholm,19
+28,Owen Boucher 4,F,11,1,0,1,19,-2,--,--,--,--,--,MI: Grand Ledge,18
+29,Connor Schubert,F,2,0,1,1,2,1,--,--,--,--,--,MN: Rosemount,16
+30,Vladimir Nikitin,G,2,0,1,1,0,0,--,--,--,--,--,Kazakhstan: Ekibastuz,20
+31,Braden Guolla,F,4,0,1,1,0,1,--,--,--,--,--,MI: Rochester Hills,16
+32,Jackson Adams,D,32,0,1,1,2,6,--,--,--,--,--,NY: Clarence Center,18
+33,Mitchell Mars 5,F,2,0,0,0,0,0,--,--,--,--,--,MI: Kalamazoo,16
+34,Ryan Franks,F,5,0,0,0,8,0,--,--,--,--,--,NY: Roslyn,20
+35,Owen Lepak,G,19,0,0,0,0,0,--,--,--,--,--,MI: Clarkston,19
+36,Thomas Zocco,F,60,22,48,70,50,10,14,5,8,13,10,NY: Staten Island,19
+37,Logan Renkowski,F,60,43,20,63,38,20,13,8,0,8,2,NY: Nesconset,20
+38,Brent Solomon,R,54,24,29,53,14,8,14,5,3,8,0,MN: Champlin,18
+39,J.J. Monteiro,L,55,16,35,51,43,19,14,8,6,14,22,MA: Hudson,19
+40,Cooper Soller,C,62,26,23,49,36,18,14,1,3,4,6,CA: Los Angeles,17
+41,Brock Schultz 1,F,47,23,19,42,41,8,14,2,4,6,27,MN: East Grand Forks,20
+42,Ryder Betzold,F,61,15,27,42,24,28,14,0,7,7,4,MI: Farmington,18
+43,Joey Macrina,F,59,19,22,41,18,8,14,4,5,9,0,PA: Collegeville,19
+44,Jake Prunty,D,44,4,33,37,12,5,14,2,2,4,2,NJ: Lake Hopatcong,16
+45,Matthew Grimes,D,60,9,26,35,54,34,14,3,6,9,24,NY: Locust Valley,18
+46,Joseph McGraw,F,49,13,20,33,65,14,14,0,3,3,16,TX: Sugar Land,19
+47,Anthony Bongo,D,62,5,25,30,32,28,14,3,3,6,6,CT: Ridgefield,18
+48,Tobias Ohman 2,C,20,6,16,22,4,12,14,1,5,6,12,Sweden: Uppsala,19
+49,Jack Brauti,D,40,0,21,21,68,20,3,1,0,1,4,ONT: Thornhill,19
+50,Noah Mannausau,D,59,4,16,20,39,27,14,1,3,4,2,MN: Bemidji,19
+51,Thomas Holtby,F,55,7,10,17,144,5,14,0,0,0,22,MD: Frederick,19
+52,Christian Chouha,F,17,6,8,14,2,8,12,0,0,0,0,NJ: Freehold,19
+53,Juho Keinanen,R,37,6,6,12,8,-7,--,--,--,--,--,Finland: Helsinki,19
+54,Wade Weil,D,55,3,7,10,153,11,14,0,2,2,16,NY: Lafayette,19
+55,Markus Jakobsen,D,29,3,5,8,10,8,14,1,3,4,4,Denmark: Odense,18
+56,Cade Strom 3,F,20,1,6,7,10,6,--,--,--,--,--,FL: Estero,17
+57,Adyn Merrick 4,C,5,2,2,4,2,1,--,--,--,--,--,MI: Saline,19
+58,Aidan Janz 5,F,6,2,1,3,0,5,--,--,--,--,--,MI: Northville,18
+59,Nick Snyder,F,32,2,1,3,8,-6,--,--,--,--,--,PA: Pittsburgh,18
+60,Linards Feldbergs,G,49,0,3,3,2,0,14,0,0,0,0,Latvia: Ogre,20
+61,Ethan Sung,F,2,1,1,2,0,3,--,--,--,--,--,CA: Pasadena,16
+62,Isaac Davis,F,4,1,1,2,0,0,--,--,--,--,--,MA: Rockland,16
+63,Dane Sorensen,D,41,1,1,2,91,4,--,--,--,--,--,CA: Los Angeles,18
+64,Jake Stuart 6,F,4,0,2,2,4,2,10,0,1,1,0,CA: Manhattan Beach,18
+65,Jake Merens,F,6,0,2,2,2,0,3,0,1,1,0,IL: Highland Park,18
+66,Sebastian Haborak,F,7,0,2,2,6,1,--,--,--,--,--,Slovakia: Bratislava,17
+67,Loic Nasreddine,D,14,0,2,2,22,3,--,--,--,--,--,NJ: Mountainside,16
+68,Alexej Kubat,F,5,1,0,1,4,1,--,--,--,--,--,Slovakia: Levoca,17
+69,Isak Forslund,D,4,0,1,1,0,-1,--,--,--,--,--,Sweden: Stockholm,19
+70,Lazarus Ebanoidze,D,4,0,1,1,2,-2,--,--,--,--,--,IL: Lake Barrington,19
+71,Nicklas Nelson,D,5,0,1,1,0,2,1,0,0,0,0,MN: Monticello,17
+72,Justin Thibault,F,6,0,1,1,0,0,--,--,--,--,--,PQ: Levis,17
+73,Michael Bonkov,D,1,0,0,0,0,0,--,--,--,--,--,NY: North Babylon,15
+74,Andrew Fox,F,2,0,0,0,0,-1,--,--,--,--,--,TX: Irving,16
+75,Caiden Pellegrino,F,2,0,0,0,0,-1,--,--,--,--,--,MA: Uxbridge,16
+76,Will Leonard,F,5,0,0,0,0,-1,--,--,--,--,--,NY: Utica,16
+77,Erik Kald,D,7,0,0,0,2,-3,--,--,--,--,--,NY: Oyster Bay,19
+78,Waylon Esche,G,13,0,0,0,0,0,1,0,0,0,0,NY: Rome,20
+79,Michael Barron,F,62,18,50,68,20,6,5,5,0,5,2,MI: Canton,19
+80,Teddy Merrill,F,60,30,30,60,84,12,5,0,4,4,4,AZ: Scottsdale,20
+81,Colin Frank,F,52,33,22,55,12,-3,5,0,3,3,0,CA: Ladera Ranch,19
+82,Melvin Ekman,C,62,23,25,48,54,12,5,1,0,1,8,Sweden: Stockholm,19
+83,Masun Fleece,F,49,25,22,47,52,18,5,1,0,1,0,CA: Rolling Hills,18
+84,Eetu Orpana,C,58,15,29,44,16,16,5,0,2,2,2,Finland: Lempaala,18
+85,Charlie Arend,F,52,18,25,43,38,7,5,0,3,3,4,IL: Wilmette,19
+86,Caden Dabrowski,F,50,15,22,37,8,8,5,1,0,1,0,IL: Crystal Lake,17
+87,Dante Josefsson-Westling,R,62,17,19,36,69,9,5,0,2,2,6,Sweden: Danderyd,19
+88,Teo Besnier,D,60,4,32,36,40,10,4,0,0,0,0,France: Briancon,20
+89,Ludvig Lafton,D,56,2,33,35,22,14,5,0,0,0,2,Norway: Baerum,19
+90,Gavin Lock,F,56,20,9,29,125,15,5,1,2,3,4,MI: Plymouth,18
+91,Xavier Lieb,F,52,8,19,27,16,2,5,2,2,4,0,PA: Nicktown,17
+92,Hayden Russell 1,R,30,6,17,23,8,5,--,--,--,--,--,CA: Huntington Beach,18
+93,Kristopher Richards,D,56,9,13,22,47,10,5,0,1,1,16,NY: Malone,18
+94,Cooper Conway,L,32,6,15,21,26,10,--,--,--,--,--,MN: Andover,20
+95,Lincoln Krizizke,D,51,6,12,18,77,9,5,0,2,2,6,WI: Waukesha,17
+96,Brandt Dubey,D,58,2,16,18,76,24,4,0,0,0,0,NY: Orchard Park,19
+97,Luke Brierley,D,54,3,11,14,12,28,5,1,0,1,4,IL: North Barrington,18
+98,Hudson Lohse,D,53,1,11,12,14,20,5,0,1,1,19,TN: Franklin,17
+99,Kane Johnson,F,45,4,7,11,37,11,1,0,0,0,0,ND: West Fargo,17
+100,"James ""Garrett"" Russell 1",D,22,1,4,5,4,8,--,--,--,--,--,CA: Huntington Beach,18
+101,Nils Sunde,D,17,1,3,4,6,3,2,0,0,0,0,Norway: Kristiansand,17
+102,Joseph Covelluzzi 2,R,11,2,1,3,2,3,--,--,--,--,--,MA: Wakefield,16
+103,Trevor Theuer,C,16,1,2,3,8,-2,4,0,0,0,0,MI: Clarkston,17
+104,Owen Crudale 1,G,14,0,2,2,0,0,--,--,--,--,--,CA: San Diego,20
+105,Vojtech Hambalek,G,44,0,2,2,2,0,5,0,0,0,0,Czechia: Varnsdorf,19
+106,Jachym Prusek 3,D,2,1,0,1,0,0,--,--,--,--,--,Czechia: Mlada Boleslav,19
+107,Mark Evans,F,2,0,1,1,0,1,--,--,--,--,--,PA: Pittsburgh,18
+108,Jack Larkin,F,1,0,0,0,0,1,--,--,--,--,--,ND: Fargo,15
+109,Louis Vittorio,D,1,0,0,0,0,0,--,--,--,--,--,IL: Chicago,17
+110,Jack O'Brien,D,1,0,0,0,2,-1,--,--,--,--,--,ME: Kennebunk,20
+111,Michael Chambre 4,G,6,0,0,0,0,0,--,--,--,--,--,FL: Fort Myers,20
+112,Zach Wooten,L,61,35,27,62,86,8,2,2,0,2,2,MN: Apple Valley,19
+113,Gavin Katz,F,60,30,27,57,34,-2,2,0,0,0,0,MN: Dellwood,18
+114,Geno Carcone,F,58,13,39,52,59,-10,2,0,1,1,0,GA: Woodstock,18
+115,Elliott Gulley,F,62,24,27,51,56,41,2,0,0,0,2,IL: Champaign,19
+116,Andrew O'Sullivan,D,62,7,39,46,18,4,2,0,1,1,0,MA: Boston,19
+117,Landon Hafele,C,52,15,27,42,69,9,2,0,0,0,2,AK: Fairbanks,17
+118,David Rozsival,R,57,23,14,37,10,16,2,0,0,0,0,Czechia: Liberec,18
+119,Nick Knutson,F,57,13,16,29,155,13,2,0,0,0,2,IL: Chicago,18
+120,William Samuelsson,C,61,13,15,28,46,-5,2,0,0,0,0,Sweden: Sodertalje,19
+121,Cruz Martin,F,55,8,15,23,37,9,2,0,0,0,0,MO: St. Louis,17
+122,Gunnar Conboy,F,37,12,9,21,83,9,2,0,0,0,0,MN: Lakeville,16
+123,Ethan Drabicki 1,F,46,8,7,15,28,-7,2,0,0,0,0,MI: Livonia,18
+124,Owen Buesgens,D,37,3,12,15,6,11,--,--,--,--,--,MN: Excelsior,19
+125,Oliver McKinney,F,37,8,6,14,25,-6,--,--,--,--,--,IL: Lake Forest,16
+126,Nate Bienstock,D,56,4,10,14,18,6,2,0,0,0,0,NJ: Hillsborough,17
+127,Adam Timm 2,R,37,1,12,13,77,7,--,--,--,--,--,WI: Chetek,20
+128,Maceo Phillips,D,44,1,10,11,187,1,2,0,0,0,0,MN: Wayzata,18
+129,Brady O'Malley,D,59,0,11,11,74,23,2,0,1,1,4,MI: Ann Arbor,20
+130,Sam Harris,D,58,1,9,10,51,19,2,0,0,0,0,MN: Minneapolis,18
+131,Jack Kultgen,D,52,1,7,8,35,5,2,0,0,0,2,MN: Shakopee,17
+132,Nikita Fedotov,D,56,1,7,8,22,9,--,--,--,--,--,Russia: Yekaterinburg,17
+133,Cody Sokol 2,F,13,3,1,4,6,-7,--,--,--,--,--,MI: Brighton,17
+134,Frantisek Netusil 3,C,17,3,0,3,24,3,--,--,--,--,--,Czech Rep.: Prague,18
+135,Chase Jette 4,F,4,1,2,3,2,2,2,0,1,1,0,IL: Lake Forest,18
+136,Morgan Brady 4,D,14,1,2,3,20,9,2,0,0,0,0,ALTA: Woking,20
+137,Leo Henriquez,G,37,1,1,2,31,0,2,0,0,0,0,Slovakia: Bratislava,18
+138,Ethan Sturgis,R,6,0,2,2,4,0,--,--,--,--,--,,17
+139,Joey Slavick,G,29,0,2,2,0,0,--,--,--,--,--,MN: Westland,18
+140,Rylan Bydal,F,5,0,1,1,2,0,--,--,--,--,--,ND: Grand Forks,18
+141,Sutton Verot,F,1,0,0,0,0,0,--,--,--,--,--,SASK: Regina,17
+142,Cole Mazzoni 5,F,1,0,0,0,0,0,--,--,--,--,--,MI: Livonia,16
+143,Chase Trompeter,F,2,0,0,0,0,-1,--,--,--,--,--,MO: Fenton,17
+144,Luke Pietila 5,F,2,0,0,0,0,0,--,--,--,--,--,MI: Northville,16
+145,Norman Greene,F,2,0,0,0,0,0,--,--,--,--,--,NY: Clarence,16
+146,Zach Wooten,L,61,35,27,62,86,8,2,2,0,2,2,MN: Apple Valley,19
+147,Gavin Katz,F,60,30,27,57,34,-2,2,0,0,0,0,MN: Dellwood,18
+148,Geno Carcone,F,58,13,39,52,59,-10,2,0,1,1,0,GA: Woodstock,18
+149,Elliott Gulley,F,62,24,27,51,56,41,2,0,0,0,2,IL: Champaign,19
+150,Andrew O'Sullivan,D,62,7,39,46,18,4,2,0,1,1,0,MA: Boston,19
+151,Landon Hafele,C,52,15,27,42,69,9,2,0,0,0,2,AK: Fairbanks,17
+152,David Rozsival,R,57,23,14,37,10,16,2,0,0,0,0,Czechia: Liberec,18
+153,Nick Knutson,F,57,13,16,29,155,13,2,0,0,0,2,IL: Chicago,18
+154,William Samuelsson,C,61,13,15,28,46,-5,2,0,0,0,0,Sweden: Sodertalje,19
+155,Cruz Martin,F,55,8,15,23,37,9,2,0,0,0,0,MO: St. Louis,17
+156,Gunnar Conboy,F,37,12,9,21,83,9,2,0,0,0,0,MN: Lakeville,16
+157,Ethan Drabicki 1,F,46,8,7,15,28,-7,2,0,0,0,0,MI: Livonia,18
+158,Owen Buesgens,D,37,3,12,15,6,11,--,--,--,--,--,MN: Excelsior,19
+159,Oliver McKinney,F,37,8,6,14,25,-6,--,--,--,--,--,IL: Lake Forest,16
+160,Nate Bienstock,D,56,4,10,14,18,6,2,0,0,0,0,NJ: Hillsborough,17
+161,Adam Timm 2,R,37,1,12,13,77,7,--,--,--,--,--,WI: Chetek,20
+162,Maceo Phillips,D,44,1,10,11,187,1,2,0,0,0,0,MN: Wayzata,18
+163,Brady O'Malley,D,59,0,11,11,74,23,2,0,1,1,4,MI: Ann Arbor,20
+164,Sam Harris,D,58,1,9,10,51,19,2,0,0,0,0,MN: Minneapolis,18
+165,Jack Kultgen,D,52,1,7,8,35,5,2,0,0,0,2,MN: Shakopee,17
+166,Nikita Fedotov,D,56,1,7,8,22,9,--,--,--,--,--,Russia: Yekaterinburg,17
+167,Cody Sokol 2,F,13,3,1,4,6,-7,--,--,--,--,--,MI: Brighton,17
+168,Frantisek Netusil 3,C,17,3,0,3,24,3,--,--,--,--,--,Czech Rep.: Prague,18
+169,Chase Jette 4,F,4,1,2,3,2,2,2,0,1,1,0,IL: Lake Forest,18
+170,Morgan Brady 4,D,14,1,2,3,20,9,2,0,0,0,0,ALTA: Woking,20
+171,Leo Henriquez,G,37,1,1,2,31,0,2,0,0,0,0,Slovakia: Bratislava,18
+172,Ethan Sturgis,R,6,0,2,2,4,0,--,--,--,--,--,,17
+173,Joey Slavick,G,29,0,2,2,0,0,--,--,--,--,--,MN: Westland,18
+174,Rylan Bydal,F,5,0,1,1,2,0,--,--,--,--,--,ND: Grand Forks,18
+175,Sutton Verot,F,1,0,0,0,0,0,--,--,--,--,--,SASK: Regina,17
+176,Cole Mazzoni 5,F,1,0,0,0,0,0,--,--,--,--,--,MI: Livonia,16
+177,Chase Trompeter,F,2,0,0,0,0,-1,--,--,--,--,--,MO: Fenton,17
+178,Luke Pietila 5,F,2,0,0,0,0,0,--,--,--,--,--,MI: Northville,16
+179,Norman Greene,F,2,0,0,0,0,0,--,--,--,--,--,NY: Clarence,16
+180,Graham Jones,F,61,26,26,52,23,-6,9,2,8,10,10,MAN: Winnipeg,18
+181,Luke McNamara,C,62,20,30,50,63,26,9,0,1,1,4,ONT: Mississauga,20
+182,Axel Lofgren,D,56,10,23,33,55,-8,6,2,2,4,8,Sweden: Lulea,20
+183,Stepan Cerny,D,62,3,29,32,26,13,9,0,4,4,10,Czechia: Hradec Kralove,18
+184,Cullen McCrate,D,61,10,20,30,49,19,9,1,3,4,2,MI: Adrian,18
+185,Saxton Tess,F,57,13,12,25,20,15,9,3,1,4,8,TX: Dallas,20
+186,Mason West,C,38,10,15,25,12,5,9,2,4,6,6,MN: Edina,18
+187,Kolin Sisson 1,F,21,7,17,24,6,8,9,3,4,7,10,RI: Lincoln,18
+188,Garrett Lindberg,D,57,6,18,24,29,20,8,1,4,5,19,MN: Moorhead,18
+189,Jacob Sagadin,R,61,11,12,23,10,13,9,1,0,1,4,Sweden: Ljungby,20
+190,Brooks Cullen,C,62,6,17,23,32,0,9,1,3,4,4,MN: Moorhead,18
+191,Nate Delladonna 2,R,34,8,10,18,30,-3,9,3,2,5,4,NY: Syracuse,19
+192,Patrick Tolan 3,F,34,9,8,17,35,11,--,--,--,--,--,AK: Anchorage,19
+193,Eero Butella 4,R,47,9,7,16,4,-2,--,--,--,--,--,IL: Chicago,19
+194,Bryce Mattern,F,51,8,8,16,31,13,7,0,2,2,15,ND: West Fargo,17
+195,Nicholas Kosiba,F,50,7,8,15,20,-9,8,0,0,0,0,MI: New Boston,18
+196,Graham Greeder,D,58,5,9,14,38,-2,7,0,0,0,2,MN: Columbus,18
+197,Zac Zimmerman,F,27,5,8,13,4,-9,9,0,2,2,0,ND: Fargo,17
+198,Arseni Marchenko,D,59,2,9,11,42,21,9,1,1,2,2,Belarus: Minsk,18
+199,Gavin Uhlenkamp 5,F,14,4,6,10,2,4,9,6,1,7,4,MN: Chanhassen,19
+200,Jack Torr,C,43,2,8,10,2,9,1,0,0,0,0,PA: Philadelphia,17
+201,Brady Zugec,F,37,2,6,8,53,7,4,0,0,0,0,NY: Geneva,18
+202,Wyatt Sypniewski,F,50,5,1,6,31,2,9,0,0,0,0,IL: Chicago,18
+203,Boden Sampair,F,12,3,1,4,2,0,--,--,--,--,--,MN: Mahtomedi,18
+204,Caleb Kim,F,11,0,3,3,2,-1,--,--,--,--,--,NJ: Leonia,17
+205,Samuel Hrenak,G,9,1,0,1,2,0,--,--,--,--,--,Slovakia: Povazska Bystrica,17
+206,Zaide Penner,D,33,0,1,1,2,-4,4,0,0,0,0,ND: Fargo,17
+207,Ajay White,G,42,0,1,1,0,0,9,0,0,0,0,PA: Bryn Mawr,19
+208,Wyatt Kuznik,F,1,0,0,0,0,0,--,--,--,--,--,MN: Maple Grove,16
+209,Andrew Smulkstys,D,2,0,0,0,0,0,--,--,--,--,--,IL: Glen Ellyn,18
+210,Alan Lendak 6,G,11,0,0,0,0,0,--,--,--,--,--,Slovakia: Nitra,19
+211,Kevin Perreault,D,18,0,0,0,0,1,--,--,--,--,--,IL: Chicago,18
+212,Drew Stewart,F,56,30,31,61,33,9,16,9,7,16,12,MN: Minnetonka,19
+213,Melvin Novotny,L,48,22,35,57,26,23,16,5,10,15,10,Sweden: Taby,18
+214,Viktor Norringer,L,48,24,25,49,28,6,16,3,9,12,6,Sweden: Lerkil,19
+215,Niles Benson,F,61,19,20,39,43,3,16,5,3,8,6,FL: Safety Harbor,18
+216,Carter Sanderson,F,54,17,17,34,88,15,14,4,3,7,12,SD: Pierre,17
+217,Charles Blanchard,F,59,17,17,34,31,11,16,2,4,6,2,CT: West Hartford,20
+218,Jack Christ,F,61,16,18,34,68,-12,16,5,5,10,2,MN: Chaska,19
+219,Rudolfs Berzkalns,C,48,13,12,25,39,7,16,4,6,10,4,Latvia: Cesis,17
+220,Adam Belusko,D,55,6,15,21,16,11,16,2,9,11,10,Slovakia: Kosice,19
+221,Danny Klaers,D,43,1,20,21,30,14,--,--,--,--,--,MN: Minnetrista,18
+222,Ty Bergeron,F,55,6,14,20,16,-2,16,2,2,4,6,MI: Flat Rock,16
+223,Anthony Thomas-Maroon,F,59,2,17,19,78,-7,16,2,3,5,42,MO: St. Louis,16
+224,Tynan Lawrence,C,13,10,7,17,6,5,--,--,--,--,--,NB: Fredericton,17
+225,Jake Stuart 1,F,47,6,8,14,27,3,--,--,--,--,--,CA: Manhattan Beach,18
+226,Branko Vukas 2,D,42,1,11,12,8,10,16,0,6,6,2,IN: Dyer,19
+227,Louis Jonerheim,L,24,1,10,11,10,0,16,2,7,9,14,Sweden: Lund,19
+228,Carter Amico,D,27,1,10,11,41,-3,16,3,4,7,12,ME: Westbrook,18
+229,Nate Larioza,D,29,4,5,9,12,3,16,2,5,7,21,CA: San Jose,19
+230,Barrett Dexheimer 3,D,31,0,9,9,22,7,--,--,--,--,--,MN: Edina,19
+231,Gustas Zemaitis,F,39,2,3,5,12,-15,6,0,0,0,0,IL: Barrington,19
+232,Jean-Samuel Daigneault,D,47,0,5,5,27,-2,12,0,0,0,2,PQ: Saint-Michel,17
+233,Lars Hutson,D,50,0,5,5,24,0,--,--,--,--,--,IL: North Barrington,16
+234,Nick Koering 3,D,19,2,2,4,17,8,--,--,--,--,--,MN: Eden Praire,18
+235,Will Schlechtweg,F,25,1,3,4,10,-3,2,0,0,0,0,NY: Goshen,17
+236,Reese Lantz 4,D,19,0,4,4,8,5,--,--,--,--,--,WI: Hartland,18
+237,Nathaniel Celski,D,27,0,3,3,6,-4,1,0,0,0,0,MN: Vadnais Heights,17
+238,Peyton Schneider,F,7,1,1,2,2,-1,--,--,--,--,--,MI: Clarkston,16
+239,Teddy Lechner 5,D,21,0,2,2,2,7,14,0,2,2,2,MN: Bloomington,17
+240,Ethan Drabicki 6,F,8,1,0,1,17,-2,--,--,--,--,--,MI: Livonia,18
+241,Brock Fairbanks,F,16,1,0,1,2,-1,--,--,--,--,--,MN: Oakdale,18
+242,Gus Thorp 7,D,21,1,0,1,10,-9,16,0,3,3,6,WI: Eau Claire,18
+243,Jackson Walsh,F,5,0,1,1,0,0,--,--,--,--,--,MI: Northville,20
+244,Samuel Doyon-Cataquiz,G,6,0,1,1,0,0,--,--,--,--,--,PQ: Montreal,18
+245,Carl Axelsson,G,44,0,1,1,2,0,16,0,1,1,0,Sweden: Danderyd,18
+246,Max Cullen,F,8,0,0,0,6,-2,15,2,1,3,4,MN: Moorhead,16
+247,William Keane,G,17,0,0,0,0,0,--,--,--,--,--,MI: West Bloomfield,17
+248,Sam Kappell,F,62,23,13,36,20,-8,11,1,1,2,2,WI: Appleton,18
+249,Gustavs Griva,F,49,13,23,36,14,5,11,0,2,2,0,Latvia: Riga,18
+250,Max Rider,F,58,16,17,33,45,1,11,0,4,4,2,MN: St. Louis Park,18
+251,Gavin Uhlenkamp 1,F,39,15,15,30,6,13,--,--,--,--,--,MN: Chanhassen,19
+252,Nolen Geerdes,D,61,6,23,29,77,-2,11,4,6,10,12,MN: Rogers,18
+253,Caleb Pittsley,F,62,11,16,27,28,-5,11,3,1,4,4,MN: Edina,17
+254,Michael Tang,F,57,9,18,27,10,-22,11,1,3,4,0,ONT: Toronto,16
+255,Jet Kwajah,D,55,7,20,27,10,-10,11,0,1,1,4,ONT: Toronto,17
+256,Jackson Nevers,C,54,8,18,26,63,-14,7,3,2,5,0,MN: Edina,20
+257,Ronan Buckberger,D,44,7,18,25,30,3,--,--,--,--,--,SASK: Saskatoon,19
+258,Stephen Cover,F,60,11,12,23,4,6,11,1,1,2,2,PA: Harrisburg,16
+259,Tyden Bergeson,F,23,11,11,22,2,1,11,4,5,9,6,MN: Moorhead,18
+260,John Stout,D,57,9,12,21,16,-4,11,1,5,6,4,MN: Minnetonka,19
+261,Will Dosan,F,56,10,8,18,10,7,11,0,1,1,4,MN: Bloomington,19
+262,Rihards Griva,F,49,5,10,15,22,-4,5,0,0,0,0,Latvia: Riga,18
+263,Ville Vaarala,F,59,6,8,14,16,9,11,0,0,0,0,Finland: Tampere,19
+264,Cooper Snee,F,50,5,9,14,54,12,8,0,1,1,4,NJ: Franklin Lakes,19
+265,Harper Frey,D,52,0,14,14,32,8,11,2,1,3,4,WI: Madison,18
+266,Chris Baird-Gajdos,D,49,3,10,13,64,-7,11,0,1,1,4,NY: New York,17
+267,Dexter Brooks,D,56,0,12,12,119,7,11,0,1,1,0,MO: St. Louis,18
+268,Lucas Prud'Homme,F,49,5,5,10,184,4,11,1,0,1,0,ONT: Ottawa,18
+269,Austin Moline,D,17,1,8,9,46,11,--,--,--,--,--,NV: Las Vegas,19
+270,Eero Butella 2,R,14,4,1,5,0,-11,11,2,1,3,4,IL: Chicago,19
+271,Sammy Smith,F,14,2,1,3,2,2,--,--,--,--,--,IL: Homer Glen,18
+272,Brady Smith,D,2,0,3,3,2,3,--,--,--,--,--,CO: Columbine Valley,18
+273,Bode McConnell,F,2,1,1,2,2,2,--,--,--,--,--,MN: Edina,17
+274,Caleb Heil,G,41,0,1,1,0,0,11,0,1,1,4,MN: Victoria,19
+275,Cody Butikis,G,1,0,0,0,0,0,--,--,--,--,--,NJ: Sewell,20
+276,Aiden Mowrey 3,D,1,0,0,0,0,0,--,--,--,--,--,PA: Wexford,16
+277,Elliot Lennon,G,2,0,0,0,0,0,--,--,--,--,--,PQ: Kirkland,17
+278,Braeden Waller,F,2,0,0,0,0,0,--,--,--,--,--,MN: Ostego,16
+279,Colin Yandle,D,2,0,0,0,16,-1,--,--,--,--,--,MA: Dorchester,15
+280,Bryce Wiitala,F,2,0,0,0,0,0,2,0,0,0,0,MN: Excelsior,18
+281,Grady Anaka,F,3,0,0,0,0,1,--,--,--,--,--,ALTA: Edmonton,16
+282,Brady Krey,G,8,0,0,0,0,0,--,--,--,--,--,MN: Albertville,18
+283,Cameron Holyoke,D,10,0,0,0,2,1,--,--,--,--,--,MA: Boston,16
+284,Cash Cruitt,G,12,0,0,0,0,0,--,--,--,--,--,MN: Andover,17
+285,Luke Garry,F,57,21,40,61,76,11,6,1,2,3,2,MN: Minnetonka,20
+286,William Tomko,C,59,24,36,60,115,0,6,2,4,6,0,PA: Venetia,18
+287,Trey Jefferis,F,55,27,24,51,26,-3,6,1,3,4,0,PA: Hummelstown,20
+288,Shayne Gould,D,60,12,39,51,14,-28,6,1,4,5,0,MA: Princeton,18
+289,Dallas Vieau 1,F,43,15,15,30,63,-13,--,--,--,--,--,MN: Duluth,19
+290,Elias Vatne,L,56,13,17,30,38,-8,6,0,2,2,0,Norway: Bergen,19
+291,Gavin Garry,F,30,13,15,28,61,-4,6,3,0,3,6,MN: Minnetonka,19
+292,Kyle O'Leary 2,F,32,13,15,28,12,15,6,0,3,3,4,MA: Medfield,19
+293,Max Anderson,F,51,14,13,27,199,-7,4,0,0,0,2,MN: Hugo,18
+294,Mason Stenger,D,59,5,19,24,44,13,6,0,2,2,4,MN: Maplewood,19
+295,Ashton Schultz 3,C,17,8,12,20,12,-2,6,4,2,6,0,MN: Victoria,18
+296,Pavel Martinu,F,53,8,9,17,59,-12,5,2,0,2,2,Czech Rep.: Plzen,17
+297,Lenny Giger,F,43,4,10,14,41,-6,1,0,1,1,0,Switzerland: Zug,18
+298,Darik Olson,D,32,8,5,13,56,2,6,0,0,0,2,MN: Duluth,19
+299,Matej Teply 4,D,27,2,10,12,28,-4,--,--,--,--,--,CT: Stamford,20
+300,Kason Muscutt,F,29,5,6,11,127,0,--,--,--,--,--,LA: Bossier City,20
+301,Christian Lyons,D,58,3,8,11,0,13,6,0,1,1,0,MO: St. Louis,18
+302,Ryan Poirier,D,51,4,6,10,18,4,2,0,0,0,0,NH: Salem,16
+303,Daniil Butin,F,59,2,8,10,39,-11,6,2,2,4,0,Belarus: Minsk,16
+304,Aidan Dyer 3,F,23,2,7,9,10,-5,6,1,0,1,2,MI: Ada,19
+305,Daniel D'Alessandro,F,28,2,7,9,12,-3,6,0,1,1,2,New Nerjery: Essex Fells,19
+306,Dakotah Bailey 5,F,40,3,5,8,86,-1,5,2,1,3,2,MN: Afton,17
+307,Gavin Carr,D,45,0,7,7,26,-4,6,0,1,1,4,NY: Churchville,19
+308,Dallas Potter,F,31,2,4,6,20,-5,2,0,0,0,0,CT: Madison,18
+309,Brock Stevenson,F,3,2,0,2,2,0,1,0,0,0,0,ONT: Milton,16
+310,Jake Tavares,F,20,2,0,2,16,-5,--,--,--,--,--,MA: Boston,18
+311,Travis Poliski,F,35,1,1,2,161,-4,4,0,0,0,0,MI: Macomb,17
+312,Caden Okovita,F,24,0,2,2,6,-14,--,--,--,--,--,ONT: Toronto,18
+313,George Lovell 6,R,5,1,0,1,0,-4,--,--,--,--,--,MA: Hingham,18
+314,T.J. Hale,F,1,0,1,1,0,0,--,--,--,--,--,,
+315,Jordan Tran,F,2,0,1,1,0,0,--,--,--,--,--,AZ: Mesa,15
+316,Garin Ludwig,D,12,0,1,1,2,-6,--,--,--,--,--,AK: Eagle River,19
+317,Mason Peapenburg,D,17,0,1,1,8,-15,--,--,--,--,--,WI: Larsen,19
+318,Kiernan Poulin,D,1,0,0,0,0,-2,--,--,--,--,--,MA: Norwell,19
+319,Luke Lalonde,F,1,0,0,0,0,-2,--,--,--,--,--,,17
+320,Carson Clukies,F,1,0,0,0,0,0,--,--,--,--,--,MO: St. Louis,17
+321,Tyler Muchmore,D,1,0,0,0,0,-3,--,--,--,--,--,,
+322,Myles Brosnan,D,2,0,0,0,0,0,--,--,--,--,--,MA: Winchester,17
+323,Houston Smith,F,2,0,0,0,0,-2,--,--,--,--,--,IA: Sioux City,15
+324,Andrew Cowgill,D,2,0,0,0,0,-1,--,--,--,--,--,PA: Collegeville,19
+325,Max Yakub,D,2,0,0,0,0,-1,--,--,--,--,--,NJ: Manalapan,16
+326,J.P. Montgomery,F,2,0,0,0,0,0,--,--,--,--,--,MO: St. Louis,16
+327,Jack Sullivan,D,3,0,0,0,2,0,--,--,--,--,--,NY: Buffalo,19
+328,Kirby Perler,D,4,0,0,0,0,-3,--,--,--,--,--,CT: Woodbridge,18
+329,Bjorn Bronas,G,12,0,0,0,0,0,--,--,--,--,--,MN: Sartell,18
+330,Ryder Shea,G,25,0,0,0,25,0,2,0,1,1,0,MA: Framingham,19
+331,Jack Fichthorn,G,36,0,0,0,2,0,5,0,0,0,0,CT: Darien,18
+332,Ryan Seelinger,F,61,31,37,68,26,26,3,2,0,2,0,IL: Downers Grove,20
+333,Blake Zielinski,C,53,25,30,55,33,9,3,2,0,2,6,NJ: Berlin,17
+334,Owen Tylec,F,62,20,25,45,24,6,3,0,2,2,0,NY: Tonawanda,18
+335,Riley Zupfer,F,58,16,25,41,60,10,3,0,3,3,0,MN: Woodbury,16
+336,Ryland Randle,D,62,10,26,36,40,10,3,0,2,2,0,TX: Prosper,19
+337,Rhys Wallin,F,60,12,20,32,28,6,3,1,1,2,6,MN: Wayzata,20
+338,Joseph Argentina,F,56,12,12,24,51,-2,3,0,1,1,0,PA: Philadelphia,17
+339,Keaton Orrey,D,59,7,15,22,101,0,3,0,0,0,4,MN: Eagan,19
+340,Adam Zidlicky,L,54,5,13,18,116,-17,3,0,0,0,2,Czech Rep.: Prague,20
+341,Nate Delladonna 1,R,26,8,6,14,37,2,--,--,--,--,--,NY: Syracuse,19
+342,Jakub Dubravik,F,29,5,9,14,30,1,3,0,1,1,0,United Kingdom: Hereford,18
+343,Henry Major 2,F,26,2,12,14,10,-1,3,2,1,3,0,NY: Skaneateles,18
+344,Jason Davenport,D,59,2,12,14,105,5,3,0,0,0,0,MI: Shelby Township,19
+345,Ryland Rooney 3,F,29,8,5,13,4,-1,--,--,--,--,--,MN: Dellwood,16
+346,Harper Searles,F,62,5,6,11,94,1,3,0,0,0,4,MN: Blaine,19
+347,Luke Norcross,F,43,3,7,10,8,-8,3,1,1,2,0,CA: Los Angeles,18
+348,Nathan Hauad,F,47,5,4,9,28,-4,--,--,--,--,--,IL: Arlington Heights,16
+349,Cade De St. Hubert,F,29,2,7,9,68,4,3,2,1,3,2,MN: Hopkins,19
+350,Barrett Dexheimer 4,D,21,2,5,7,10,-2,--,--,--,--,--,MN: Edina,19
+351,Henry Chmiel,D,48,1,4,5,57,0,3,0,1,1,4,MN: Woodbury,17
+352,Theo Kiss,F,18,2,2,4,25,-3,--,--,--,--,--,Slovakia: Kosice,19
+353,Becker Wenkus,D,13,0,4,4,16,4,3,0,2,2,2,MN: Edina,16
+354,Ryan Kroll,D,31,0,4,4,55,-3,--,--,--,--,--,IL: Plainfield,19
+355,Tomas Mikel,D,43,0,4,4,76,-2,3,0,0,0,2,Czech Rep.: Zlin,18
+356,Cazimiro Carlson 5,F,11,1,2,3,33,-4,1,0,0,0,0,MN: Virginia,17
+357,Gus Thorp 6,D,27,0,3,3,22,5,--,--,--,--,--,WI: Eau Claire,18
+358,Nick Koering 4,D,31,0,3,3,42,4,--,--,--,--,--,MN: Eden Praire,18
+359,Nate Garski,F,3,0,2,2,0,2,--,--,--,--,--,MN: Grand Rapids,17
+360,Reese Shaw,F,1,1,0,1,0,1,--,--,--,--,--,MN: Coon Rapids,20
+361,Jakeb Lynch 7,F,4,1,0,1,0,-2,--,--,--,--,--,NE: Papillion,18
+362,Michael Sandruck,F,7,1,0,1,8,-1,--,--,--,--,--,NY: Victor,19
+363,William Soffer,F,4,0,1,1,2,-4,--,--,--,--,--,NY: New York,16
+364,Landon Cottingham,D,6,0,1,1,2,-1,--,--,--,--,--,MN: Woodbury,18
+365,Drew Roelofs,F,26,0,1,1,8,-5,--,--,--,--,--,MN: Mound,19
+366,Logan Hughes,G,2,0,0,0,0,0,--,--,--,--,--,WI: Fond du Lac,19
+367,Miller Wenkus,D,2,0,0,0,0,0,--,--,--,--,--,MN: Edina,16
+368,Ryan Gerlich,G,3,0,0,0,4,0,--,--,--,--,--,MN: Brainerd,19
+369,Andrew Bely,G,7,0,0,0,0,0,--,--,--,--,--,MO: St. Louis,18
+370,Andrei Nikolaev,G,12,0,0,0,0,0,1,0,0,0,0,Russia: Moscow,16
+371,Danick St. Pierre,F,12,0,0,0,35,-1,2,0,0,0,4,PQ: Saint-Jean-sur-Riche,17
+372,Max Weilandt,G,21,0,0,0,0,0,--,--,--,--,--,IL: Northbrook,20
+373,Alan Lendak 8,G,23,0,0,0,0,0,2,0,0,0,0,Slovakia: Nitra,19
+374,Jackson Crowder,C,45,20,26,46,74,2,--,--,--,--,--,TX: Allen,18
+375,Timothy Kazda,F,59,22,19,41,58,-5,--,--,--,--,--,Slovakia: Ilava,16
+376,Brady Kudrick,F,62,17,22,39,14,5,--,--,--,--,--,MA: Norwell,19
+377,James Scantlebury,F,62,16,23,39,8,-6,--,--,--,--,--,PQ: Chateauguay,16
+378,Kolin Sisson 1,F,38,14,19,33,38,8,--,--,--,--,--,RI: Lincoln,18
+379,Tobias Ohman 2,C,37,9,24,33,20,-1,--,--,--,--,--,Sweden: Uppsala,19
+380,Luke Goukler,L,56,12,19,31,33,3,--,--,--,--,--,GA: Cumming,19
+381,Ashton Schultz 3,C,32,9,13,22,41,-5,--,--,--,--,--,MN: Victoria,18
+382,Marco Senerchia,D,56,4,18,22,8,4,--,--,--,--,--,RI: Greenville,18
+383,Adyn Merrick 4,C,18,8,10,18,4,9,--,--,--,--,--,MI: Saline,19
+384,Nathan Chorlton 5,F,41,5,13,18,8,-3,--,--,--,--,--,MN: Hastings,17
+385,Cole Tuminaro,D,54,5,11,16,148,-4,--,--,--,--,--,IL: South Beloit,18
+386,Wyatt Herres 4,D,28,3,11,14,45,-4,--,--,--,--,--,WI: Appleton,18
+387,Jason Millett,D,62,2,12,14,16,9,--,--,--,--,--,NH: Hampton,18
+388,Aidan Dyer 3,F,34,4,9,13,14,-1,--,--,--,--,--,MI: Ada,19
+389,Alex Calbeck,D,33,2,11,13,6,-5,--,--,--,--,--,IL: St. Charles,19
+390,Henry Major 6,F,31,6,6,12,14,-4,--,--,--,--,--,NY: Skaneateles,18
+391,Dallas Vieau 7,F,18,5,7,12,20,-7,--,--,--,--,--,MN: Duluth,19
+392,Ryland Rooney 8,F,27,5,4,9,0,1,--,--,--,--,--,MN: Dellwood,16
+393,Benson Grande,F,48,4,5,9,23,-7,--,--,--,--,--,ND: Fargo,18
+394,Jonas Kemps,D,57,2,7,9,52,-7,--,--,--,--,--,CA: Sebastopol,17
+395,Patrick Tolan 9,F,24,1,8,9,6,-8,--,--,--,--,--,AK: Anchorage,19
+396,Trevor Shorter,D,34,5,3,8,45,2,--,--,--,--,--,IL: Elmhurst,15
+397,Miles Burgin,C,33,4,4,8,6,-1,--,--,--,--,--,BC: Surrey,19
+398,Alex Assadourian,C,28,4,3,7,2,-2,--,--,--,--,--,ONT: Stouffville,20
+399,Easton Pace,F,11,2,4,6,2,-1,--,--,--,--,--,MI: Chesterfield,18
+400,Eero Hyytiainen,D,15,1,5,6,0,-4,--,--,--,--,--,Finland: Helsinki,19
+401,Cole Bumgarner,F,12,2,3,5,0,-3,--,--,--,--,--,MN: Shakopee,17
+402,Carter Frankiw,D,18,0,4,4,27,0,--,--,--,--,--,ALTA: Sherwood Park,19
+403,Jayden Kurtz,D,16,2,1,3,2,-7,--,--,--,--,--,MN: Rogers,17
+404,Zachary Spagnuolo,D,31,1,2,3,38,-1,--,--,--,--,--,TX: Allen,18
+405,Cade Strom 10,F,16,1,0,1,0,-3,--,--,--,--,--,FL: Estero,17
+406,Camillo Milani,F,7,0,1,1,0,-2,--,--,--,--,--,ONT: Oakville,16
+407,Sam Caulfield,G,11,0,1,1,0,0,--,--,--,--,--,MA: Needham,19
+408,Louis-Felix Charrois,G,31,0,1,1,0,0,--,--,--,--,--,PQ: Drummondville,20
+409,Connor Mackenzie,G,1,0,0,0,0,0,--,--,--,--,--,ALTA: Canmore,18
+410,Kage Flory,D,1,0,0,0,0,-1,--,--,--,--,--,NY: Grand Island,16
+411,Jackson Mahley,D,1,0,0,0,2,1,--,--,--,--,--,MO: St. Louis,15
+412,Alex Wang,G,1,0,0,0,0,0,--,--,--,--,--,MA: Concord,16
+413,Vladislav Bryzgalov,G,2,0,0,0,0,0,--,--,--,--,--,NJ: Haddonfield,19
+414,Karter Lundmark,F,2,0,0,0,0,0,--,--,--,--,--,PA: West Brandywine,16
+415,Luca Cannata,F,2,0,0,0,0,-1,--,--,--,--,--,NY: Commack,17
+416,Reese Tracy,F,3,0,0,0,0,-1,--,--,--,--,--,FL: Estero,16
+417,Joseph Erickson,C,10,0,0,0,0,-7,--,--,--,--,--,MN: Mound,17
+418,Veeti Louhivaara,G,22,0,0,0,0,0,--,--,--,--,--,Finland: Jyvaskyla,19
+419,Alex Pelletier,F,59,48,37,85,39,17,8,4,4,8,6,CT: Granby,20
+420,Layne Loomer,F,59,30,42,72,29,26,8,5,7,12,8,ALTA: Lethbridge,20
+421,Kade Kohanski,F,62,21,33,54,55,8,8,6,4,10,4,MN: Hermantown,20
+422,Nik Young,F,61,9,33,42,67,-9,8,1,6,7,8,NY: Lawtons,19
+423,Nate Pederson,F,58,8,21,29,34,-4,7,1,0,1,12,MN: Shakopee,17
+424,John Hirschfeld,F,56,12,12,24,56,3,8,2,4,6,0,MN: St. Cloud,19
+425,Josef Eichler,D,49,3,18,21,192,14,8,2,4,6,16,Czechia: Benesov,19
+426,Jackson Rudh,F,58,8,12,20,10,0,5,0,0,0,0,MN: St. Paul,18
+427,Drew Nelson,D,42,3,12,15,6,15,4,0,1,1,4,MN: Duluth,19
+428,Aidan Janz 1,F,33,5,6,11,10,-3,--,--,--,--,--,MI: Northville,18
+429,Brady Cunningham,D,49,4,7,11,90,2,8,0,1,1,6,IL: Plainfield,17
+430,Will Kortan,F,50,6,4,10,22,-10,5,0,1,1,10,MN: Lakeville,18
+431,Aatu Karvinen,F,46,4,6,10,35,2,--,--,--,--,--,Finland: Vantaa,19
+432,Drew DellaSalla,C,33,2,8,10,6,0,--,--,--,--,--,NY: New York,19
+433,Cooper Williams,L,22,6,3,9,18,-6,7,2,2,4,8,MI: Pinckney,18
+434,Josh Polak,F,28,4,5,9,24,5,--,--,--,--,--,ALTA: Strathcona County,19
+435,Casey Vandertop,F,59,2,7,9,10,-8,8,1,1,2,0,MN: Edina,17
+436,Griffin Brown,D,42,1,7,8,62,1,8,1,2,3,4,CA: San Jose,18
+437,Samuel Murin 2,L,19,3,4,7,14,3,8,1,2,3,4,Slovakia: Poprad,18
+438,Brady Sloper,D,55,1,6,7,106,-9,7,0,0,0,25,MA: North Andover,17
+439,Cole Braunshausen,R,7,4,2,6,4,-1,8,1,3,4,2,MN: Lake Elmo,18
+440,Nathaniel Poole,D,48,1,5,6,22,6,8,0,1,1,2,NY: Ithaca,18
+441,Brady Kudrna,F,40,3,2,5,48,-16,--,--,--,--,--,IL: Bartlett,19
+442,K.J. Sauer,F,5,2,3,5,30,-1,8,1,0,1,10,MN: Andover,17
+443,Evan Malkhassian,F,41,1,4,5,14,-10,8,1,1,2,4,ONT: Toronto,18
+444,Samuel Hybsky,C,27,0,3,3,4,-1,--,--,--,--,--,Slovakia: Zvolen,17
+445,Lefty Markonidis 3,F,6,2,0,2,10,-4,--,--,--,--,--,MA: Hudson,20
+446,Jachym Prusek 4,D,22,2,0,2,17,3,--,--,--,--,--,Czechia: Mlada Boleslav,19
+447,Luke Janviriya,D,9,0,2,2,0,2,--,--,--,--,--,MI: Bloomfield Hills,19
+448,Luke Puchner,F,2,0,1,1,0,-1,--,--,--,--,--,MN: New Germany,17
+449,Ivan Bercik,R,4,0,1,1,2,1,--,--,--,--,--,Slovakia: Brezno,18
+450,Charlie Durkin,G,1,0,0,0,0,0,--,--,--,--,--,IL: Glencoe,19
+451,Jeremy Poirier,D,1,0,0,0,0,-2,--,--,--,--,--,NH: Salem,19
+452,Devon Keller,G,1,0,0,0,0,0,--,--,--,--,--,ND: Minot,17
+453,Daniel Greenbaum,F,1,0,0,0,0,0,--,--,--,--,--,CA: Orange,16
+454,Brayden Hughes,D,2,0,0,0,2,-1,--,--,--,--,--,MI: Mattawan,17
+455,Lincoln Ayers-Assad,F,2,0,0,0,0,0,--,--,--,--,--,MN: Bloomington,17
+456,Jack Solomon,G,3,0,0,0,0,0,--,--,--,--,--,MO: St. Louis,20
+457,Kaiden Donia,D,5,0,0,0,15,-3,--,--,--,--,--,MA: Townsend,17
+458,Emery Ipsen,D,19,0,0,0,34,1,5,0,0,0,0,IL: Antioch,16
+459,Charlie Menard,G,21,0,0,0,2,0,5,0,0,0,0,AK: Fairbanks,17
+460,William Prowse,G,42,0,0,0,12,0,3,0,1,1,2,CO: Vail,18
+461,Carson Pilgrim,C,52,18,23,41,25,-10,2,0,1,1,0,MN: Warroad,19
+462,Bode Laylin,D,55,11,27,38,45,-8,2,1,1,2,0,MN: St. Michael,17
+463,Brecken Smith,F,61,14,17,31,24,-7,2,1,0,1,0,MI: Jackson,18
+464,Mason Jenson,F,58,12,18,30,10,-16,2,0,1,1,0,MN: Rogers,18
+465,Ashton Dahms,F,61,16,12,28,6,0,2,1,1,2,0,MN: Lakeville,20
+466,Cameron Springer,F,61,11,14,25,8,-7,2,1,0,1,0,MI: Dexter,19
+467,Paul Bloomer,R,58,8,13,21,62,-11,2,0,0,0,0,IL: Chicago,20
+468,Luca Jarvis,F,56,4,17,21,10,5,2,0,0,0,0,MN: Stillwater,16
+469,Connor Brown,F,60,7,12,19,37,-2,2,0,1,1,4,FL: Estero,20
+470,Oliver Ozogany,F,56,9,8,17,45,-8,2,0,0,0,0,Slovakia: Bratislava,16
+471,Cooper Ernewein,L,51,6,8,14,27,-15,2,1,0,1,0,SASK: Saskatoon,16
+472,Lincoln Hjelm,R,43,5,9,14,23,-8,2,0,1,1,0,NE: Omaha,19
+473,Cade Kozak,D,54,2,8,10,24,-1,2,0,0,0,0,MN: Isanti,18
+474,Noah LaPointe,D,45,6,3,9,35,-11,2,0,0,0,4,IL: Hinsdale,19
+475,Luka Rohloff,D,44,3,6,9,63,-10,2,0,1,1,0,MN: Grand Rapids,18
+476,Gairin Michalski,D,36,3,5,8,41,3,--,--,--,--,--,WI: Waukesha,18
+477,Evan Sofikitis,D,45,1,7,8,52,3,2,0,0,0,0,MI: Bloomfield Hills,18
+478,Maddox Malmquist,F,49,4,3,7,22,-13,--,--,--,--,--,MAN: East St. Paul,17
+479,Maxwell Dessner,D,35,2,5,7,12,-13,2,0,0,0,0,MN: Eden Prairie,16
+480,Drew Anastasio,D,41,0,7,7,16,7,--,--,--,--,--,CT: West Simsbury,20
+481,"Frantisek NetusilTo Omaha""> 1",C,18,1,5,6,42,-3,--,--,--,--,--,Czech Rep.: Prague,18
+482,Samuel Murin 2,L,34,4,1,5,25,-7,--,--,--,--,--,Slovakia: Poprad,18
+483,Adam Obusek,F,18,1,4,5,2,-3,2,0,2,2,0,Slovakia: Bratislava,17
+484,Braydon Sisco,F,3,1,1,2,2,0,--,--,--,--,--,NJ: Fair Lawn,16
+485,Jackson Lackas,F,9,0,2,2,0,0,--,--,--,--,--,NV: Las Vegas,18
+486,Bode Wise,D,17,0,2,2,8,-1,--,--,--,--,--,PA: Johnstown,19
+487,Evan Wanner,F,4,1,0,1,2,0,--,--,--,--,--,MN: Moorhead,16
+488,Kash Crawford,D,13,1,0,1,8,-3,--,--,--,--,--,GA: Atlanta,19
+489,Luke Dubsky,F,2,0,1,1,0,0,--,--,--,--,--,IL: Frankfort,17
+490,Alexander Matveyev,D,6,0,1,1,2,-4,--,--,--,--,--,Russia: Ishimbay,20
+491,Colton Whitfield,D,7,0,1,1,2,-4,--,--,--,--,--,RI: Warwick,19
+492,Matthew Koch,D,2,0,0,0,0,-3,--,--,--,--,--,,
+493,Charlie Mineman 3,D,3,0,0,0,0,-2,2,0,0,0,0,MO: St. Louis,16
+494,Tibor Baran,D,3,0,0,0,0,-1,--,--,--,--,--,Slovakia: Bratislava,16
+495,Evan Nee,F,4,0,0,0,0,-1,--,--,--,--,--,MA: Arlington,18
+496,Quinn Beumer,G,4,0,0,0,0,0,1,0,0,0,0,MN: Orono,15
+497,John Whisler,F,4,0,0,0,0,-1,--,--,--,--,--,MN: Woodbury,16
+498,Kade McLaughlin,F,6,0,0,0,0,-2,--,--,--,--,--,AK: Anchorage,16
+499,Owen Nelson,G,26,0,0,0,0,0,1,0,0,0,0,WI: Hudson,18
+500,Michal Pradel,G,38,0,0,0,2,0,1,0,0,0,0,Slovakia: Dolny Kubin,18
+501,Kole Hyles,C,58,23,19,42,36,6,--,--,--,--,--,NH: Newfields,19
+502,Charlie Vig,F,59,11,21,32,106,9,--,--,--,--,--,ND: Bismarck,18
+503,Tanner Morgan,F,59,9,22,31,77,-9,--,--,--,--,--,PA: Harrisburg,19
+504,Lefty Markonidis 1,F,53,15,15,30,46,-9,--,--,--,--,--,MA: Hudson,20
+505,Adam Israilov,F,56,10,20,30,42,-25,--,--,--,--,--,Russia: Yakaterinburg,16
+506,Yegor Kim,F,59,14,13,27,34,-20,--,--,--,--,--,Kazakhstan: Karaganda,17
+507,Ryan Aaronson,F,58,16,8,24,38,-10,--,--,--,--,--,IL: Riverwoods,18
+508,Reese Lantz 2,D,38,3,19,22,23,-7,--,--,--,--,--,WI: Hartland,18
+509,Jack Stanius,F,50,11,10,21,45,-19,--,--,--,--,--,MN: White Bear Lake,18
+510,Cameron Caron,L,61,10,11,21,137,-14,--,--,--,--,--,Mass: Dracut,18
+511,Brady Arneson,F,50,10,7,17,14,-20,--,--,--,--,--,MN: Red Wing,20
+512,Tommy Spencer,F,56,2,15,17,28,-21,--,--,--,--,--,OH: Sylvania,18
+513,Artyom Prima,F,17,6,8,14,8,-7,--,--,--,--,--,Russia: Yekaterinburg,17
+514,Finn De St. Hubert,D,57,1,10,11,14,-14,--,--,--,--,--,MN: Hopkins,18
+515,Ryder Reynolds,D,46,3,5,8,95,-13,--,--,--,--,--,NE: Omaha,17
+516,Frantisek Netusil 3,C,16,2,6,8,71,-1,--,--,--,--,--,Czech Rep.: Prague,18
+517,Drake Gram,D,35,2,4,6,39,-12,--,--,--,--,--,MI: Grosspoint Park,17
+518,Hudson Kowalchuk,D,37,1,5,6,18,-20,--,--,--,--,--,MAN: Winnipeg,17
+519,Henryk Lasky,D,42,1,4,5,27,-10,--,--,--,--,--,CT: Greenwich,20
+520,George Lovell 4,R,28,2,2,4,27,-9,--,--,--,--,--,MA: Hingham,18
+521,Brock Cheslock,F,9,2,1,3,0,1,--,--,--,--,--,MN: Rogers,17
+522,Nikita Konevych,D,34,2,1,3,12,-8,--,--,--,--,--,Ukraine: Kiev,19
+523,Todd Kilpela,D,19,1,2,3,12,-2,--,--,--,--,--,MI: Hancock,17
+524,Ilya Gromov,F,24,1,2,3,21,-6,--,--,--,--,--,Kazakhstan: Astana,16
+525,Ryan Yurkiw,D,35,1,2,3,22,-14,--,--,--,--,--,MI: Novi,17
+526,Dakotah Bailey 5,F,8,0,3,3,6,-2,--,--,--,--,--,MN: Afton,17
+527,Caden Lee,F,8,0,3,3,15,-8,--,--,--,--,--,MN: Chaska,19
+528,Owen Smith,D,16,0,3,3,10,-2,--,--,--,--,--,MN: Maple Grove,19
+529,Stanislav Sanejster,D,10,1,1,2,8,9,--,--,--,--,--,Czechia: Praha,16
+530,Thaddeus McMahon,D,13,1,1,2,6,-10,--,--,--,--,--,IL: Wilmette,16
+531,Blake Sinclair,D,10,1,0,1,2,3,--,--,--,--,--,MN: Albertville,17
+532,Branko Vukas 6,D,10,0,1,1,0,-5,--,--,--,--,--,IN: Dyer,19
+533,Nils Maurins,G,35,0,1,1,0,0,--,--,--,--,--,Latvia: Riga,18
+534,Joc Bukovec,F,1,0,0,0,0,-1,--,--,--,--,--,Slovenia: Ljubljana,16
+535,Nathan Di Chiara,D,1,0,0,0,2,0,--,--,--,--,--,CT: Fairfield,18
+536,Brian Cooke,G,1,0,0,0,0,0,--,--,--,--,--,MO: St. Louis,17
+537,Owen Kailher,C,1,0,0,0,0,0,--,--,--,--,--,MA: Boston,16
+538,Aiden Mckenna,G,2,0,0,0,0,0,--,--,--,--,--,NY: Webster,19
+539,Michael Conlon,D,3,0,0,0,2,-5,--,--,--,--,--,NY: Rockville Center,18
+540,Kevin Lysohir,F,5,0,0,0,4,-7,--,--,--,--,--,NY: Lake Ronkonkoma,17
+541,David Hruby,F,12,0,0,0,2,-5,--,--,--,--,--,Czechia: Prague,17
+542,Jacob Solano,F,20,0,0,0,8,-7,--,--,--,--,--,AZ: Phoenix,19
+543,Devin Shakar,G,33,0,0,0,2,0,--,--,--,--,--,NY: Glenville,20
+544,Carter Meyer,F,42,15,22,37,91,-21,--,--,--,--,--,MA: Winchester,16
+545,Nolan Fitzhenry,F,44,13,20,33,16,-16,--,--,--,--,--,MN: Andover,16
+546,Jamie Glance,F,25,12,14,26,8,0,--,--,--,--,--,NH: Stratham,16
+547,Brayden Willis,F,39,14,11,25,10,-20,--,--,--,--,--,AZ: Gilbert,15
+548,Sammy Nelson,F,21,9,10,19,18,-4,--,--,--,--,--,MN: Maple Grove,16
+549,Michael Berchild,L,21,8,11,19,8,9,--,--,--,--,--,MN: Excelsior,17
+550,Finnegan Sears,F,38,12,6,18,6,-38,--,--,--,--,--,MA: Medford,16
+551,Victor Plante,L,20,8,10,18,4,-1,--,--,--,--,--,MN: Hermantown,17
+552,Dayne Beuker,C,25,6,12,18,2,7,--,--,--,--,--,OR: Portland,17
+553,Casey Mutryn,R,25,7,9,16,26,-3,--,--,--,--,--,MA: Norwell,17
+554,Wyatt Cullen,L,15,6,10,16,25,3,--,--,--,--,--,MN: Moorhead,16
+555,A.J. Francisco,D,22,3,12,15,4,-3,--,--,--,--,--,MN: Hermantown,17
+556,Logan Stuart,C,23,3,12,15,0,11,--,--,--,--,--,CA: Manhattan Beach,17
+557,Parker Trottier,L,24,8,6,14,38,5,--,--,--,--,--,MN: Edina,17
+558,Diego Gutierrez,D,39,2,10,12,8,-9,--,--,--,--,--,TX: Flower Mound,16
+559,Rocco Pelosi,F,35,6,5,11,16,-29,--,--,--,--,--,NJ: Sewell,16
+560,Freddie Schneider,F,27,2,9,11,10,-25,--,--,--,--,--,MN: Edina,16
+561,Christian Semetsis,D,28,2,9,11,58,-19,--,--,--,--,--,NY: Smithtown,15
+562,Lukas Zajic,R,25,5,5,10,38,-1,--,--,--,--,--,IL: Plainfield,17
+563,Kane Barch,F,36,2,8,10,60,-20,--,--,--,--,--,TX: Plano,16
+564,Broden McArthur,D,37,2,7,9,46,-53,--,--,--,--,--,TX: Dallas,16
+565,Luke Schairer,D,25,1,8,9,26,4,--,--,--,--,--,NC: Charlotte,17
+566,Alexander Milojevic,F,34,4,4,8,0,-28,--,--,--,--,--,IL: Chicago,15
+567,Hudson Salvador,F,33,3,5,8,14,-28,--,--,--,--,--,NJ: Warren,16
+568,Braden Horton,F,29,2,6,8,26,-41,--,--,--,--,--,PA: Souderton,16
+569,Easton Johnson,D,30,1,7,8,4,-32,--,--,--,--,--,MN: Luverne,16
+570,Cannon Thibodeau,F,31,5,2,7,4,-22,--,--,--,--,--,SC: Charleston,15
+571,Aurelio Garcia,F,19,4,2,6,24,-1,--,--,--,--,--,IL: Romeoville,17
+572,Logan Lutner,D,24,1,5,6,12,2,--,--,--,--,--,MN: Maple Grove,17
+573,Benjamin Geiger,D,39,1,4,5,28,-35,--,--,--,--,--,MN: Northfield,16
+574,Carson Scott,D,37,0,5,5,77,-24,--,--,--,--,--,MN: Dayton,16
+575,Sam Pandolfo,F,22,1,3,4,8,-28,--,--,--,--,--,MA: Winchester,16
+576,Jackson Marthaler,D,25,0,4,4,22,0,--,--,--,--,--,WI: Superior,17
+577,Abe Barnett,D,25,0,4,4,12,16,--,--,--,--,--,IL: Wilmette,16
+578,Tyler Martyniuk,D,22,1,2,3,51,1,--,--,--,--,--,MI: Washington Township,16
+579,Jake Boguniecki,D,28,2,0,2,59,-24,--,--,--,--,--,CT: Orange,16
+580,Jonny Bloedow,F,6,0,2,2,0,-3,--,--,--,--,--,MN: Sleepy Eye,16
+581,Nick Bogas,D,17,0,2,2,18,3,--,--,--,--,--,MI: Royal Oak,17
+582,Sawyer Schmidt,F,5,1,0,1,0,-3,--,--,--,--,--,NY: Clarence,15
+583,Sam Wathier,D,10,1,0,1,8,0,--,--,--,--,--,IA: Des Moines,17
+584,Wyatt Jones,F,11,1,0,1,4,-8,--,--,--,--,--,TX: Friendswood,16
+585,Griffin Storey,F,2,0,1,1,0,-2,--,--,--,--,--,MN: Faribault,16
+586,Cole Mazzoni 1,F,3,0,1,1,0,-4,--,--,--,--,--,MI: Livonia,16
+587,Dain Gordon 2,F,4,0,1,1,0,0,--,--,--,--,--,CO: Denver,17
+588,Luke Carrithers,G,11,0,1,1,0,0,--,--,--,--,--,MN: Maple Grove,17
+589,Beck Thoreson,D,14,0,1,1,2,-11,--,--,--,--,--,MN: Moorhead,15
+590,Harrison Dana,D,1,0,0,0,0,-3,--,--,--,--,--,NE: Omaha,16
+591,Austin Ross,F,1,0,0,0,0,0,--,--,--,--,--,MI: Bloomfield,
+592,Jack Dunne,F,1,0,0,0,0,0,--,--,--,--,--,NJ: Marlboro,16
+593,Aiden Mowrey 3,D,1,0,0,0,4,-2,--,--,--,--,--,PA: Wexford,16
+594,Jackson Ciuffetelli,D,1,0,0,0,0,-2,--,--,--,--,--,MI: Dearborn,17
+595,Cade Zoerink,D,1,0,0,0,0,0,--,--,--,--,--,SD: Sioux Falls,16
+596,Carter Gardocki,G,2,0,0,0,0,0,--,--,--,--,--,MI: Dearborn,16
+597,Cole Sabourin,F,2,0,0,0,2,-5,--,--,--,--,--,RI: Cumberland,17
+598,Dennis Emesibe 4,F,2,0,0,0,0,-1,--,--,--,--,--,ALTA: Calgary,17
+599,Charlie Mineman 5,D,2,0,0,0,0,-1,--,--,--,--,--,MO: St. Louis,16
+600,Sig Ebersold,D,2,0,0,0,0,-2,--,--,--,--,--,MI: Grosse Pointe Park,16
+601,Gunnar Gullstrand,F,2,0,0,0,0,0,--,--,--,--,--,MI: Houghton,15
+602,Vincent Arnone,F,2,0,0,0,0,-2,--,--,--,--,--,NV: Las Vegas,16
+603,Mitchell Mars 6,F,2,0,0,0,0,0,--,--,--,--,--,MI: Kalamazoo,16
+604,Teddy Lechner 7,D,3,0,0,0,0,-3,--,--,--,--,--,MN: Bloomington,17
+605,Luke Pietila 1,F,3,0,0,0,2,-1,--,--,--,--,--,MI: Northville,16
+606,Andrew Mohesky,F,4,0,0,0,2,-4,--,--,--,--,--,MO: St. Louis,17
+607,Joseph Covelluzzi 8,R,5,0,0,0,0,-3,--,--,--,--,--,MA: Wakefield,16
+608,Cayden Jackman 9,F,5,0,0,0,2,-2,--,--,--,--,--,MO: St. Louis,15
+609,Brody George,F,10,0,0,0,4,-4,--,--,--,--,--,PA: Johnstown,17
+610,Brady Knowling,G,15,0,0,0,0,0,--,--,--,--,--,IL: Chicago,17
+611,Eli Winters,G,18,0,0,0,2,0,--,--,--,--,--,MI: Muskegon,16
+612,Nate Chizik,G,23,0,0,0,0,0,--,--,--,--,--,PA: Warrington,16
+613,Ty Mason,L,57,24,20,44,71,-13,--,--,--,--,--,SASK: Weyburn,20
+614,Salvatore Viviano,F,61,16,24,40,10,-23,--,--,--,--,--,MI: Wyandotte,17
+615,Cullen Emery,F,48,13,18,31,2,-26,--,--,--,--,--,MA: Reading,20
+616,Atte Vikla,F,61,6,21,27,76,-41,--,--,--,--,--,Finland: Helsinki,19
+617,Rio Treharne,F,49,6,20,26,39,-4,--,--,--,--,--,MN: Minneapolis,18
+618,Toby Carlson,F,59,9,16,25,44,-31,--,--,--,--,--,AK: Anchorage,19
+619,Dylan Nolan,F,36,11,9,20,14,-1,--,--,--,--,--,CA: San Jose,18
+620,Ryan Whiterabbit 1,D,39,4,15,19,18,-9,--,--,--,--,--,MN: Mahtomedi,19
+621,"Adyn MerrickTo Chicago""> 2",C,28,7,11,18,33,-16,--,--,--,--,--,MI: Saline,19
+622,Drew Waterfield,R,53,7,11,18,12,-10,--,--,--,--,--,IL: Aurora,19
+623,Tyler Deakos,F,19,7,10,17,19,-7,--,--,--,--,--,ALTA: Canmore,18
+624,Chase Jette 3,F,12,7,9,16,4,-3,--,--,--,--,--,IL: Lake Forest,18
+625,Travis Lefere,F,56,8,7,15,37,-27,--,--,--,--,--,MI: Grand Rapids,18
+626,Jackson Schneider,D,52,4,11,15,86,0,--,--,--,--,--,ALTA: Calgary,18
+627,Hayden Russell 4,R,29,5,6,11,21,-14,--,--,--,--,--,CA: Huntington Beach,18
+628,Jimmy Rieber,D,60,2,9,11,28,-20,--,--,--,--,--,MN: Woodbury,17
+629,Caleb Deanovich,D,39,3,7,10,20,-18,--,--,--,--,--,WI: Fond du Lac,16
+630,Avery Laliberte,D,62,3,7,10,41,-22,--,--,--,--,--,MAN: Lorette,18
+631,Owen Degraff,F,51,7,2,9,35,-17,--,--,--,--,--,FL: Odessa,17
+632,Jakeb Lynch 5,F,33,2,7,9,34,-13,--,--,--,--,--,NE: Papillion,18
+633,Trevor O'Donohue 6,F,40,1,6,7,34,-19,--,--,--,--,--,MI: Pinckney,17
+634,Viktor Eriksson,L,7,5,0,5,0,-7,--,--,--,--,--,Sweden: Gavle,20
+635,"James ""Garrett"" Russell 4",D,29,2,3,5,8,-7,--,--,--,--,--,CA: Huntington Beach,18
+636,Kade Meyer,D,22,1,4,5,24,-3,--,--,--,--,--,WI: Minocqua,16
+637,Morgan Brady 3,D,31,1,4,5,66,-8,--,--,--,--,--,ALTA: Woking,20
+638,Nash Roed,F,11,1,3,4,2,-12,--,--,--,--,--,MN: White Bear Lake,15
+639,Brock Schultz 7,F,12,1,3,4,24,-11,--,--,--,--,--,MN: East Grand Forks,20
+640,Cody Sokol 8,F,16,1,3,4,4,-8,--,--,--,--,--,MI: Brighton,17
+641,Wyatt Herres 9,D,16,1,1,2,42,-5,--,--,--,--,--,WI: Appleton,18
+642,Cazimiro Carlson 10,F,11,0,2,2,0,1,--,--,--,--,--,MN: Virginia,17
+643,Adam Timm 8,R,20,0,2,2,55,-4,--,--,--,--,--,WI: Chetek,20
+644,Miles Jinman,F,2,0,1,1,0,-2,--,--,--,--,--,Switzerland: Sion,15
+645,Jakov Matijevic,F,10,0,1,1,0,-1,--,--,--,--,--,Croatia: Zagreb,17
+646,Dane Callaway,G,24,0,1,1,23,0,--,--,--,--,--,MN: Duluth,20
+647,Eli Zucker,G,1,0,0,0,0,0,--,--,--,--,--,NY: New York,16
+648,Austin Brekelmans,F,3,0,0,0,0,-1,--,--,--,--,--,ONT: Strathroy,17
+649,J.J. Salajko,G,3,0,0,0,0,0,--,--,--,--,--,OH: Columbus,19
+650,Rian Marquardt,D,3,0,0,0,0,0,--,--,--,--,--,MN: Hugo,16
+651,Liam Schultz,F,3,0,0,0,0,0,--,--,--,--,--,MN: Victoria,16
+652,Sam Peckham,D,4,0,0,0,2,-4,--,--,--,--,--,MN: Edina,17
+653,Cayden Jackman 11,F,4,0,0,0,0,0,--,--,--,--,--,MO: St. Louis,15
+654,Anthony Pellitteri,D,4,0,0,0,4,3,--,--,--,--,--,MA: Holbrook,18
+655,Owen Crudale 4,G,5,0,0,0,0,0,--,--,--,--,--,CA: San Diego,20
+656,Camden Langfeld,F,8,0,0,0,2,-5,--,--,--,--,--,,16
+657,Keegan Davis,F,12,0,0,0,21,-7,--,--,--,--,--,,17
+658,Michael Chambre 12,G,17,0,0,0,4,0,--,--,--,--,--,FL: Fort Myers,20
+659,Phileas Lachat,G,19,0,0,0,0,0,--,--,--,--,--,Switzerland: Delemont,19
