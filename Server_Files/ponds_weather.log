@@ -1,0 +1,39 @@
+2026-08-12 20:27:38,674 | INFO | --------------------------------------------------
+2026-08-12 20:27:38,675 | INFO | Ponds weather script started.
+2026-08-12 20:27:38,907 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:27:38,971 | INFO | 427 weather dates are missing.
+2026-08-12 20:27:38,971 | INFO | Requesting Open-Meteo data from 2025-04-11 through 2026-06-11.
+2026-08-12 20:27:42,387 | INFO | Open-Meteo returned no new weather rows.
+2026-08-12 20:28:11,728 | INFO | --------------------------------------------------
+2026-08-12 20:28:11,728 | INFO | Ponds weather script started.
+2026-08-12 20:28:11,887 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:28:11,896 | INFO | 427 weather dates are missing.
+2026-08-12 20:28:11,896 | INFO | Requesting Open-Meteo data from 2025-04-11 through 2026-06-11.
+2026-08-12 20:28:16,293 | INFO | Open-Meteo returned no new weather rows.
+2026-08-12 20:37:41,731 | INFO | --------------------------------------------------
+2026-08-12 20:37:41,731 | INFO | Ponds weather script started.
+2026-08-12 20:37:41,938 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:37:42,027 | INFO | 427 weather dates are missing.
+2026-08-12 20:37:42,027 | INFO | Requesting Open-Meteo data from 2025-04-11 through 2026-06-11.
+2026-08-12 20:37:45,757 | INFO | Open-Meteo returned no new weather rows.
+2026-08-12 20:38:22,646 | INFO | --------------------------------------------------
+2026-08-12 20:38:22,647 | INFO | Ponds weather script started.
+2026-08-12 20:38:22,878 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:38:22,889 | INFO | 427 weather dates are missing.
+2026-08-12 20:38:22,889 | INFO | Requesting Open-Meteo data from 2025-04-11 through 2026-06-11.
+2026-08-12 20:38:30,658 | INFO | Open-Meteo returned no new weather rows.
+2026-08-12 20:42:13,382 | INFO | --------------------------------------------------
+2026-08-12 20:42:13,382 | INFO | Ponds weather script started.
+2026-08-12 20:42:13,584 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:42:13,595 | INFO | 427 weather dates are missing.
+2026-08-12 20:42:13,595 | INFO | Requesting Open-Meteo data from 2025-04-11 through 2026-06-11.
+2026-08-12 20:42:16,366 | INFO | Successfully inserted 427 weather rows.
+2026-08-12 20:42:16,368 | INFO | Ponds weather script completed successfully.
+2026-08-12 20:42:42,454 | INFO | --------------------------------------------------
+2026-08-12 20:42:42,454 | INFO | Ponds weather script started.
+2026-08-12 20:42:42,672 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:42:42,684 | INFO | Weather table is already up to date.
+2026-08-12 20:47:18,229 | INFO | --------------------------------------------------
+2026-08-12 20:47:18,230 | INFO | Ponds weather script started.
+2026-08-12 20:47:18,438 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-12 20:47:18,449 | INFO | Weather table is already up to date.

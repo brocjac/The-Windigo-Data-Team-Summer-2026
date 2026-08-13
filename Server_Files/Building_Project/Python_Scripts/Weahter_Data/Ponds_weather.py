@@ -1,4 +1,5 @@
 import os
+import logging
 from pathlib import Path
 from urllib.parse import quote_plus
 
@@ -10,14 +11,32 @@ from dotenv import load_dotenv
 from retry_requests import retry
 from sqlalchemy import create_engine, text
 
-# ---------------------------------------------------------
-# 1. Hubspot From start and end of Electricity and Gas Billing
-# ---------------------------------------------------------
+# =========================================================
+# 1. PATHS AND LOGGING
+# =========================================================
 
-env_path = Path(__file__).resolve().parents[3] / ".env"
+server_files_path = Path(__file__).resolve().parents[3]
 
-print("Looking for .env at:", env_path)
-print("Exists:", env_path.exists())
+env_path = server_files_path / ".env"
+log_path = server_files_path / "ponds_weather.log"
+
+logging.basicConfig(
+    filename=log_path,
+    filemode="a",
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
+)
+
+logging.info("--------------------------------------------------")
+logging.info("Ponds weather script started.")
+
+# =========================================================
+# 2. LOAD ENVIRONMENT VARIABLES
+# =========================================================
+
+if not env_path.exists():
+    logging.error(f".env file not found: {env_path}")
+    raise FileNotFoundError(f".env file not found: {env_path}")
 
 load_dotenv(env_path)
 
@@ -41,9 +60,17 @@ missing = [
 ]
 
 if missing:
-    raise RuntimeError(
-        f"Missing environment variables: {', '.join(missing)}"
+    message = (
+        f"Missing environment variables: "
+        f"{', '.join(missing)}"
     )
+
+    logging.error(message)
+    raise RuntimeError(message)
+
+# =========================================================
+# 3. CREATE SQL SERVER CONNECTION
+# =========================================================
 
 odbc_connection = (
     f"DRIVER={{{driver}}};"
@@ -65,13 +92,33 @@ engine = create_engine(
     pool_pre_ping=True
 )
 
+# =========================================================
+# 4. READ UTILITY BILLING DATA
+# =========================================================
+
 electric_query = text("""select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats""")
 
 gas_query = text("""select Natural_Gas_Read_Date, Natural_Gas_Billing_Days from Natural_Gas_Stats""")
+try:
+    with engine.connect() as connection:
+        electric_df = pd.read_sql(electric_query, connection)
+        gas_df = pd.read_sql(gas_query, connection)
+except Exception:
+    logging.exception(
+        "Failed to read utility billing data from SQL Server."
+    )
+    raise
 
-with engine.connect() as connection:
-    electric_df = pd.read_sql(electric_query, connection)
-    gas_df = pd.read_sql(gas_query, connection)
+if electric_df.empty and gas_df.empty:
+    logging.info(
+        "No electricity or natural gas records found. "
+        "Nothing to process."
+    )
+    raise SystemExit(0)
+
+# =========================================================
+# 5. CLEAN UTILITY DATA
+# =========================================================
 
 gas_df = gas_df.dropna(
     subset=[
@@ -87,53 +134,81 @@ electric_df = electric_df.dropna(
     ]
 )
 
-print(gas_df.head())
-print(electric_df.head())
-
-gas_df["Natural_Gas_Read_Date"] = pd.to_datetime(
-    gas_df["Natural_Gas_Read_Date"],
-    errors="coerce"
-)
-
-gas_df["Natural_Gas_Billing_Days"] = pd.to_numeric(
-    gas_df["Natural_Gas_Billing_Days"],
-    errors="coerce"
-)
-
-electric_df["Electricity_Read_Date"] = pd.to_datetime(
-    electric_df["Electricity_Read_Date"],
-    errors="coerce"
-)
-
-electric_df["Electricity_Billing_Days"] = pd.to_numeric(
-    electric_df["Electricity_Billing_Days"],
-    errors="coerce"
-)
-
-gas_df["gas_start_date"] = (
-    gas_df["Natural_Gas_Read_Date"]
-    - pd.to_timedelta(
-        gas_df["Natural_Gas_Billing_Days"] - 1,
-        unit="D"
+if not gas_df.empty:
+    gas_df["Natural_Gas_Read_Date"] = pd.to_datetime(
+        gas_df["Natural_Gas_Read_Date"],
+        errors="coerce"
     )
-)
 
-electric_df["electricity_start_date"] = (
-    electric_df["Electricity_Read_Date"]
-    - pd.to_timedelta(
-        electric_df["Electricity_Billing_Days"] - 1,
-        unit="D"
+    gas_df["Natural_Gas_Billing_Days"] = pd.to_numeric(
+        gas_df["Natural_Gas_Billing_Days"],
+        errors="coerce"
     )
-)
 
-absolute_start = min(
-    gas_df["gas_start_date"].min(),
-    electric_df["electricity_start_date"].min()
-)
+    gas_df["gas_start_date"] = (
+        gas_df["Natural_Gas_Read_Date"]
+        - pd.to_timedelta(
+            gas_df["Natural_Gas_Billing_Days"] - 1,
+            unit="D"
+        )
+    )
 
-absolute_end = max(
-    gas_df["Natural_Gas_Read_Date"].max(),
-    electric_df["Electricity_Read_Date"].max()
+
+if not electric_df.empty:
+    electric_df["Electricity_Read_Date"] = pd.to_datetime(
+        electric_df["Electricity_Read_Date"],
+        errors="coerce"
+    )
+
+    electric_df["Electricity_Billing_Days"] = pd.to_numeric(
+        electric_df["Electricity_Billing_Days"],
+        errors="coerce"
+    )
+
+    electric_df["electricity_start_date"] = (
+        electric_df["Electricity_Read_Date"]
+        - pd.to_timedelta(
+            electric_df["Electricity_Billing_Days"] - 1,
+            unit="D"
+        )
+    )
+
+# =========================================================
+# 6. DETERMINE REQUIRED WEATHER DATE RANGE
+# =========================================================
+
+start_dates = []
+end_dates = []
+
+if not gas_df.empty:
+    start_dates.append(
+        gas_df["gas_start_date"].min()
+    )
+    end_dates.append(
+        gas_df["Natural_Gas_Read_Date"].max()
+    )
+
+if not electric_df.empty:
+    start_dates.append(
+        electric_df["electricity_start_date"].min()
+    )
+    end_dates.append(
+        electric_df["Electricity_Read_Date"].max()
+    )
+
+if not start_dates or not end_dates:
+    logging.info(
+        "No valid billing dates were available."
+    )
+    raise SystemExit(0)
+
+absolute_start = min(start_dates)
+absolute_end = max(end_dates)
+
+logging.info(
+    f"Required weather range: "
+    f"{absolute_start.date()} through "
+    f"{absolute_end.date()}"
 )
 
 if gas_df.empty:
@@ -142,13 +217,77 @@ if gas_df.empty:
 if electric_df.empty:
     raise ValueError("Electricity_Stats returned no records.")
 
-start_date = pd.to_datetime(absolute_start).strftime("%Y-%m-%d")
-end_date = pd.to_datetime(absolute_end).strftime("%Y-%m-%d")
+# =========================================================
+# 7. CHECK EXISTING WEATHER DATA
+# =========================================================
 
+existing_weather_query = text("""
+    SELECT Ponds_Weather_Date
+    FROM Ponds_Weather_Meteo
+""")
 
-# ---------------------------------------------------------
-# 2. GLOBAL COORDINATES FOR THE PONDS
-# ---------------------------------------------------------
+try:
+    with engine.connect() as connection:
+        existing_weather_df = pd.read_sql(
+            existing_weather_query, connection
+        )
+except Exception:
+    logging.exception(
+        "Failed to read existing weather dates."
+    )
+    raise
+
+if not existing_weather_df.empty:
+    existing_weather_df["Ponds_Weather_Date"] = (
+        pd.to_datetime(existing_weather_df["Ponds_Weather_Date"], errors="coerce").dt.date
+    )
+
+# =========================================================
+# 8. DETERMINE MISSING DATES
+# =========================================================
+
+required_dates = pd.date_range(
+    start=absolute_start,
+    end=absolute_end,
+    freq="D"
+).date
+
+if existing_weather_df.empty:
+    missing_dates = list(required_dates)
+
+else:
+    existing_dates = set(
+        existing_weather_df["Ponds_Weather_Date"].dropna()
+    )
+    missing_dates = [date for date in required_dates if date not in existing_dates]
+
+if not missing_dates:
+    logging.info(
+        "Weather table is already up to date."
+    )
+    engine.dispose()
+    raise SystemExit(0)
+
+logging.info(f"{len(missing_dates)} weather dates are missing.")
+
+# =========================================================
+# 9. DETERMINE API RANGE
+# =========================================================
+
+api_start_date = min(missing_dates)
+api_end_date = max(missing_dates)
+
+start_date = api_start_date.strftime("%Y-%m-%d")
+end_date = api_end_date.strftime("%Y-%m-%d")
+
+logging.info(
+    f"Requesting Open-Meteo data from "
+    f"{start_date} through {end_date}."
+)
+
+# =========================================================
+# 10. OPEN-METEO LOCATION
+# =========================================================
 PONDS_LAT = 43.07036380872471
 PONDS_LON = -88.12443039077134
 
@@ -156,9 +295,9 @@ print("\nUsing Ponds coordinates:")
 print(f"Latitude:  {PONDS_LAT}")
 print(f"Longitude: {PONDS_LON}\n")
 
-# ---------------------------------------------------------
-# 3. SETUP OPEN-METEO CLIENT
-# ---------------------------------------------------------
+# =========================================================
+# 11. OPEN-METEO CLIENT
+# =========================================================
 session = requests.Session()
 
 retry_session = retry(
@@ -171,10 +310,14 @@ openmeteo = openmeteo_requests.Client(
     session=retry_session
 )
 
-# ---------------------------------------------------------
-# 4. API REQUEST PARAMETERS
-# ---------------------------------------------------------
-url = "https://historical-forecast-api.open-meteo.com/v1/forecast"
+# =========================================================
+# 12. OPEN-METEO REQUEST
+# =========================================================
+#url = "https://historical-forecast-api.open-meteo.com/v1/forecast"
+url = (
+    "https://historical-forecast-api."
+    "open-meteo.com/v1/forecast"
+)
 params = {
     "latitude": PONDS_LAT,
     "longitude": PONDS_LON,
@@ -188,12 +331,15 @@ params = {
     ],
     "temperature_unit": "fahrenheit",
 }
+try:
+    responses = openmeteo.weather_api(url, params=params)
+except Exception:
+    logging.exception("Open-Meteo API request failed.")
+    raise
 
-responses = openmeteo.weather_api(url, params=params)
-
-# ---------------------------------------------------------
-# 5. PROCESS RESPONSE
-# ---------------------------------------------------------
+# =========================================================
+# 13. PROCESS OPEN-METEO RESPONSE
+# =========================================================
 response = responses[0]
 print(f"Coordinates returned by API: {response.Latitude()}°N {response.Longitude()}°E")
 print(f"Elevation: {response.Elevation()} m asl")
@@ -206,9 +352,6 @@ daily_min = daily.Variables(1).ValuesAsNumpy()
 daily_rh_mean = daily.Variables(2).ValuesAsNumpy()
 daily_dew_mean = daily.Variables(3).ValuesAsNumpy()
 
-# ---------------------------------------------------------
-# 6. BUILD DATAFRAME
-# ---------------------------------------------------------
 daily_data = {
     "date": pd.date_range(
         start=pd.to_datetime(daily.Time(), unit="s", utc=True),
@@ -227,11 +370,9 @@ daily_dataframe = pd.DataFrame(data=daily_data)
 # Strip time → keep only YYYY-MM-DD
 daily_dataframe["date"] = pd.to_datetime(daily_dataframe["date"])
 
-# ---------------------------------------------------------
-# 7. Print
-# ---------------------------------------------------------
-print(daily_dataframe.info())
-print(start_date, end_date)
+# =========================================================
+# 14. CLEAN WEATHER DATA
+# =========================================================
 
 daily_dataframe = daily_dataframe.rename(
     columns={
@@ -243,6 +384,12 @@ daily_dataframe = daily_dataframe.rename(
     }
 )
 
+daily_dataframe["Ponds_Weather_Date"] = (
+    pd.to_datetime(
+        daily_dataframe["Ponds_Weather_Date"]
+    ).dt.date
+)
+
 col_numeric = [
     "Max_Temperature",
     "Min_Temperature",
@@ -252,6 +399,24 @@ col_numeric = [
 
 daily_dataframe[col_numeric] = (daily_dataframe[col_numeric].astype("float64").round(2))
 
+# =========================================================
+# 15. KEEP ONLY ACTUALLY MISSING DATES
+# =========================================================
+
+missing_date_set = set(missing_dates)
+
+daily_dataframe = daily_dataframe[
+    daily_dataframe["Ponds_Weather_Date"].isin(missing_date_set)
+].copy()
+
+if daily_dataframe.empty:
+    logging.info("Open-Meteo returned no new weather rows.")
+    engine.dispose()
+    raise SystemExit(0)
+
+# =========================================================
+# 16. INSERT WEATHER DATA INTO SQL SERVER
+# =========================================================
 
 target_columns = [
     "Ponds_Weather_Date",
@@ -261,12 +426,28 @@ target_columns = [
     "Avg_Dew_Point"
 ]
 
-daily_dataframe["Ponds_Weather_Date"] = (
-    pd.to_datetime(daily_dataframe["Ponds_Weather_Date"])
-    .dt.date
-)
-
 target_table = "Ponds_Weather_Meteo"
 
-daily_dataframe.to_sql(name=target_table, con=engine, if_exists="append", index=False)
+daily_dataframe = daily_dataframe[target_columns]
+
+try:
+    daily_dataframe.to_sql(name=target_table, con=engine, if_exists="append", index=False)
+    logging.info(
+        f"Successfully inserted "
+        f"{len(daily_dataframe)} weather rows."
+    )
+except Exception:
+    logging.exception(
+        "Failed to insert weather data "
+        "into SQL Server."
+    )
 print("Specified data successfully inserted!")
+
+# =========================================================
+# 17. CLEANUP
+# =========================================================
+
+engine.dispose()
+logging.info(
+    "Ponds weather script completed successfully."
+)

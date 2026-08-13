@@ -61,8 +61,8 @@ CREATE TABLE [Zamboni] (
 CREATE TABLE [Zam_Maintenance] (
   [Zam_Maintenance_ID] Int NOT NULL identity(1,1),
   [Zam_Maintenance_Date] Date NOT NULL,
-  [Maintenance_Done] Varchar(20) NOT NULL,
-  [Notes] Varchar(15),
+  [Maintenance_Done] Varchar(80) NOT NULL,
+  [Notes] Varchar(Max),
   [Blade_Inventory] Int NOT NULL,
   [Blade_Width] Decimal(5,4),
   [Zamboni_ID] Int,
@@ -85,7 +85,7 @@ CREATE TABLE [Facility_HVAC_Filter] (
   [20x25_Inventory] Int NOT NULL,
   [20x20_Inventory] Int NOT NULL,
   [16x22_Inventory] Int NOT NULL,
-  [Notes] Varchar(15),
+  [Notes] Varchar(Max),
   [Worker_ID] Int,
   CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x25_Status check ([20x25_Changed] IN ('Yes', 'No', 'Not Operating')),
   CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Not Operating')),
@@ -115,7 +115,7 @@ CREATE TABLE [Ice_Maintenance] (
   [Chipped] varchar(10) not null,
   [Cross_Cut] varchar(10) not null,
   [Hand_Flood] varchar(10) not null,
-  [Notes] Varchar(20),
+  [Notes] Varchar(Max),
   [Worker_ID] Int,
   PRIMARY KEY ([Ice_Maintenance_ID]),
   CONSTRAINT Chk_Ice_Maintenance_Edged_Status check (Edged IN ('Yes', 'Corners', 'NA')),
@@ -127,7 +127,7 @@ CREATE TABLE [Ice_Maintenance] (
       REFERENCES [Worker]([Worker_ID])
 );
 
-CREATE TABLE [Rink_HVAC_Filter] (
+CREATE TABLE [Rink_Des_HVAC_Filter] (
   [Rink_HVAC_Filter_ID] Int NOT NULL identity(1,1),
   [Rink_Change_Date] Date NOT NULL,
   [20x20_Changed] Varchar(20),
@@ -136,7 +136,7 @@ CREATE TABLE [Rink_HVAC_Filter] (
   [20x20_Inventory] Int,
   [24x24_Inventory] Int,
   [18x24_Inventory] Int,
-  [Notes] Varchar(15),
+  [Notes] Varchar(Max),
   [Worker_ID] Int,
   CONSTRAINT Chk_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Not Operating')),
   CONSTRAINT Chk_24x24_Status check ([24x24_Changed] IN ('Yes', 'No', 'Not Operating')),
@@ -151,7 +151,7 @@ CREATE TABLE [Rink_Misc_Maintenance] (
   [Rink_Misc_Maintenance_ID] Int NOT NULL identity(1,1),
   [Rink_Misc_Maintenance_Date] Date NOT NULL,
   [Task] Varchar(35),
-  [Notes] Varchar(45),
+  [Notes] Varchar(Max),
   [Worker_ID] Int,
   PRIMARY KEY ([Rink_Misc_Maintenance_ID]),
   CONSTRAINT [FK_Rink_Misc_Maintenance_Worker_ID]
@@ -169,7 +169,7 @@ CREATE TABLE [Glycol_Machine] (
   [After_Pressure_Out_PSI] Int Not NUll,
   [After_Measure_Line] Char(7) Not NUll,
   [Gallons_Added] Int Not NUll,
-  [Notes] Varchar(50),
+  [Notes] Varchar(Max),
   [Worker_ID] Int,
   PRIMARY KEY ([Glycol_Machine_ID]),
   CONSTRAINT Chk_Before_Status check ([Before_Measure_Line] IN ('Above', 'Below', 'At')),
@@ -209,7 +209,7 @@ CREATE TABLE [Electricity_Stats] (
 CREATE TABLE [Zam_Schedule] (
   [Zam_Schedule_ID] Int NOT NULL identity(1,1),
   [Zam_Schedule_Date] Date NOT NULL,
-  [Notes] Varchar(15),
+  [Notes] Varchar(Max),
   [Zamboni_ID] Int,
   [Worker_ID] Int
   PRIMARY KEY ([Zam_Schedule_ID]),

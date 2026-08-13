@@ -22,7 +22,7 @@ go
 select * from Zamboni
 
 go
-insert into [dbo].[Zam_Schedule] ([Zam_Schedule_Date],[Zam_Schedule_ID], Notes)
+insert into [dbo].[Zam_Schedule] ([Zam_Schedule_Date],[Zamboni_ID], Notes)
 values
     ('10/3/2025', 2, ''),
     ('11/4/2025', 1, ''),
