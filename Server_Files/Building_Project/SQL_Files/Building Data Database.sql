@@ -3,17 +3,27 @@ go
 use The_Ponds_Building_DB;
 go
 CREATE TABLE [Worker] (
-  [Worker_ID] Int NOT NULL identity(1,1),
-  [First_Name] Varchar(15) NOT NULL,
-  [Last_Name] Varchar(20) NOT NULL,
-  [Email] Varchar(255) NOT NULL,
-  [Password_Hash] Varchar(255) NOT NULL,
-  [Account_Status] VARCHAR(20) NOT NULL DEFAULT 'pending',
-  [Created_At] DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
-  [Updated_At] DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
-  PRIMARY KEY ([Worker_ID]),
-  CONSTRAINT UQ_Worker_Email UNIQUE (Email),
-  CONSTRAINT Chk_Worker_Status CHECK (Account_Status IN ('pending', 'active', 'suspended', 'deleted'))
+    [Worker_ID] INT NOT NULL IDENTITY(1,1),
+    [First_Name] VARCHAR(15) NOT NULL,
+    [Last_Name] VARCHAR(20) NOT NULL,
+    [Email] VARCHAR(255) NOT NULL,
+    [Password_Hash] VARCHAR(255) NOT NULL,
+    [Account_Status] VARCHAR(20) NOT NULL
+        CONSTRAINT DF_Worker_Account_Status DEFAULT 'pending',
+    [Created_At] DATETIME2 NOT NULL
+        CONSTRAINT DF_Worker_Created_At DEFAULT SYSDATETIME(),
+    [Updated_At] DATETIME2 NOT NULL
+        CONSTRAINT DF_Worker_Updated_At DEFAULT SYSDATETIME(),
+
+    CONSTRAINT PK_Worker PRIMARY KEY ([Worker_ID]),
+    CONSTRAINT UQ_Worker_Email UNIQUE ([Email]),
+    CONSTRAINT Chk_Worker_Status
+        CHECK ([Account_Status] IN (
+            'pending',
+            'active',
+            'suspended',
+            'deleted'
+        ))
 );
 
 CREATE TABLE [Rink_Temp_Humidity] (

@@ -37,3 +37,108 @@
 2026-08-12 20:47:18,230 | INFO | Ponds weather script started.
 2026-08-12 20:47:18,438 | INFO | Required weather range: 2025-04-11 through 2026-06-11
 2026-08-12 20:47:18,449 | INFO | Weather table is already up to date.
+2026-08-17 09:41:15,950 | INFO | --------------------------------------------------
+2026-08-17 09:41:15,950 | INFO | Ponds weather script started.
+2026-08-17 10:50:53,900 | INFO | --------------------------------------------------
+2026-08-17 10:50:53,900 | INFO | Ponds weather script started.
+2026-08-17 10:50:54,320 | ERROR | Failed to read utility billing data from SQL Server.
+Traceback (most recent call last):
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The SELECT permission was denied on the object 'Electricity_Stats', database 'The_Ponds_Building_DB', schema 'dbo'. (229) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\pandas\io\sql.py", line 1679, in execute
+    return execute_function(sql, *args)
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The SELECT permission was denied on the object 'Electricity_Stats', database 'The_Ponds_Building_DB', schema 'dbo'. (229) (SQLExecDirectW)")
+[SQL: select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Server_Files\Building_Project\Python_Scripts\Weahter_Data\Ponds_weather.py", line 104, in <module>
+    electric_df = pd.read_sql(electric_query, connection)
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\pandas\io\sql.py", line 730, in read_sql
+    return pandas_sql.read_query(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        sql,
+        ^^^^
+    ...<6 lines>...
+        dtype=dtype,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\pandas\io\sql.py", line 1856, in read_query
+    result = self.execute(sql, params)
+  File "D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\.venv\Lib\site-packages\pandas\io\sql.py", line 1681, in execute
+    raise DatabaseError(f"Execution failed on sql '{sql}': {exc}") from exc
+pandas.errors.DatabaseError: Execution failed on sql 'select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats': (pyodbc.ProgrammingError) ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]The SELECT permission was denied on the object 'Electricity_Stats', database 'The_Ponds_Building_DB', schema 'dbo'. (229) (SQLExecDirectW)")
+[SQL: select Electricity_Read_Date, Electricity_Billing_Days from Electricity_Stats]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-08-17 10:54:59,943 | INFO | --------------------------------------------------
+2026-08-17 10:54:59,943 | INFO | Ponds weather script started.
+2026-08-17 10:55:00,091 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-17 10:55:00,107 | INFO | Weather table is already up to date.
+2026-08-17 10:57:04,517 | INFO | --------------------------------------------------
+2026-08-17 10:57:04,517 | INFO | Ponds weather script started.
+2026-08-17 10:57:04,667 | INFO | Required weather range: 2025-04-11 through 2026-06-11
+2026-08-17 10:57:04,689 | INFO | 427 weather dates are missing.
+2026-08-17 10:57:04,689 | INFO | Requesting Open-Meteo data from 2025-04-11 through 2026-06-11.
+2026-08-17 10:57:11,361 | INFO | Successfully inserted 427 weather rows.
+2026-08-17 10:57:11,363 | INFO | Ponds weather script completed successfully.
