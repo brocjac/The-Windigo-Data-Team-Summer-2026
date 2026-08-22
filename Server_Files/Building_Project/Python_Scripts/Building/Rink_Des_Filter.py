@@ -49,25 +49,30 @@ engine = create_engine(
     pool_pre_ping=True
 )
 
-df = pd.read_csv("D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Windigo_Ice_Depths_Pivot.csv")
+df = pd.read_excel("D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ponds Operations.xlsx", sheet_name='Des Filter')
 print("Actual CSV Columns:", df.columns.tolist())
 
 df = df.rename(
     columns={
-        "Date": "Reading_Date",
-        "Zone": "Zone_ID",
-        "Depth": "Ice_Depth"
+        "Date Changed":"Rink_Change_Date",
+        "20 x 20c":"20x20_Changed",
+        "24 x 24c":"24x24_Changed",
+        "18 x 24c":"18x24_Changed",
+        "20 x 20i":"20x20_Inventory",
+        "24 x 24i":"24x24_Inventory",
+        "18x 24i":"18x24_Inventory",
+        "Notes":"Notes"
     }
 )
 
-df["Reading_Date"] = pd.to_datetime(df["Reading_Date"])
+df["Rink_Change_Date"] = pd.to_datetime(df["Rink_Change_Date"])
 
-target_columns = ["Reading_Date", "Zone_ID", "Ice_Depth"]
+target_columns = ["Rink_Change_Date", "20x20_Changed", "24x24_Changed", "18x24_Changed", "20x20_Inventory", "24x24_Inventory", "18x24_Inventory", "Notes"]
 
 df = df[target_columns]
 
-target_table = "Ice_Depth_Readings"
-df.sort_values(by="Reading_Date", ascending=True)
+target_table = "Rink_Des_HVAC_Filter"
+df.sort_values(by="Rink_Change_Date", ascending=True)
 
 df.to_sql(name=target_table, con=engine, if_exists="append", index=False)
 

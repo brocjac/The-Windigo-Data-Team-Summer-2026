@@ -49,25 +49,28 @@ engine = create_engine(
     pool_pre_ping=True
 )
 
-df = pd.read_csv("D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ice_Depth_File_Converter\Windigo_Ice_Depths_Pivot.csv")
+df = pd.read_excel("D:\other-files\school\database_dev\The-Windigo-Data-Team-Summer-2026\Ice Depth Project\Ponds Operations.xlsx", sheet_name='Ice Maintanance')
 print("Actual CSV Columns:", df.columns.tolist())
 
 df = df.rename(
     columns={
-        "Date": "Reading_Date",
-        "Zone": "Zone_ID",
-        "Depth": "Ice_Depth"
+        "Date":"Ice_Maintenance_Date",
+        "Edged":"Edged",
+        "Chipped":"Chipped",
+        "Cross Cut":"Cross_Cut",
+        "Hand Flood":"Hand_Flood",
+        "Notes":"Notes"
     }
 )
 
-df["Reading_Date"] = pd.to_datetime(df["Reading_Date"])
+df["Ice_Maintenance_Date"] = pd.to_datetime(df["Ice_Maintenance_Date"])
 
-target_columns = ["Reading_Date", "Zone_ID", "Ice_Depth"]
+target_columns = ["Ice_Maintenance_Date", "Edged", "Chipped", "Cross_Cut", "Hand_Flood", "Notes"]
 
 df = df[target_columns]
 
-target_table = "Ice_Depth_Readings"
-df.sort_values(by="Reading_Date", ascending=True)
+target_table = "Ice_Maintenance"
+df.sort_values(by="Ice_Maintenance_Date", ascending=True)
 
 df.to_sql(name=target_table, con=engine, if_exists="append", index=False)
 
