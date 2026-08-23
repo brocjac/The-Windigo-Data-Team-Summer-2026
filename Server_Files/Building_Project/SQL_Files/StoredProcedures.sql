@@ -57,8 +57,37 @@ begin
 	from Natural_Gas_Stats ngs
 end
 go
-
-
+create or alter Procedure dbo.The_Ponds_Weather_Analysis
+as
+begin
+	set nocount on;
+	with ConvertedInput as (
+		select
+			Rink_Temp_Humidity_ID,
+			((Temperature - 32.0)*5.0/9.0) as temp_c,
+			(Humidity / 100.0) as rh_decimal
+		from Rink_Temp_Humidity
+	),
+	CalculatedAlpha as (
+		select
+			Rink_Temp_Humidity_ID,
+			temp_c,
+			(LOG(rh_decimal) + ((17.625 * temp_c) / (243.04 + temp_c))) as alpha
+		from ConvertedInput
+	),
+	DewPointCelcius as (
+		select
+			Rink_Temp_Humidity_ID,
+			((243.04 * alpha) / (17.625 - alpha)) as dew_point_c
+		from CalculatedAlpha
+	)
+	select
+		Temperature as 'Temperature F',
+		Humidity,
+		ROUND(((dew_point_c * 9.0 / 5.0) + 32.0), 2) as 'Dew Point'
+	from Rink_Temp_Humidity rth
+	join DewPointCelcius dpc on rth.Rink_Temp_Humidity_ID = dpc.Rink_Temp_Humidity_ID
+end
 
 go
 select column_name
@@ -71,5 +100,21 @@ SELECT
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'Electricity_Stats'
   AND COLUMN_NAME IN ('Electricity_Billing_Days', 'Electricity_Billing_Date');
+
+SELECT 
+    SCHEMA_NAME(t.schema_id) AS SchemaName,
+    t.name AS TableName,
+    SUM(p.rows) AS TotalRowCount
+FROM 
+    sys.tables AS t
+INNER JOIN 
+    sys.partitions AS p ON t.object_id = p.object_id
+WHERE 
+    p.index_id IN (0, 1) -- 0 = Heap (no index), 1 = Clustered Index
+    AND t.is_ms_shipped = 0 -- Exclude system tables
+GROUP BY 
+    t.schema_id, t.name
+ORDER BY 
+    TotalRowCount DESC;
 
 go

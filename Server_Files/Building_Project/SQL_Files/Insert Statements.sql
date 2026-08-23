@@ -156,7 +156,7 @@ SELECT COLUMN_NAME
 FROM INFORMATION_SCHEMA.COLUMNS 
 WHERE TABLE_NAME = 'Maintenance_Checks_and_Repairs';
 
-select * from Maintenance_Category
+select * from Maintenance_Checks_and_Repairs
 
 truncate table Ice_Depth_Readings
 
