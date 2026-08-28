@@ -2,7 +2,9 @@
 .venv/
 venv/
 env/
-
+obj/
+bin/
+database_scripts.ps1
 # Python cache
 __pycache__/
 *.py[cod]

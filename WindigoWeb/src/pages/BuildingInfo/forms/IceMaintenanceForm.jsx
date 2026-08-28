@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import { FiSave, FiRotateCcw, FiX } from 'react-icons/fi'
-import FormCard from '../../components/FormCard'
-import {getRinkTempHumidity, addRinkTempHumidity} from '../../data/api'
+import FormCard from '../../../components/FormCard'
+import {getIceMaintenance, addIceMaintenance} from '../../../data/api'
 
-function RinkTemperatureForm() {
-  const [form, setForm] = useState({ date: '', airTemp: '', /*iceTemp: '',*/ humidity: ''})
+function IceMaintenanceForm() {
+  const [form, setForm] = useState({ date: '', Edged: 'No', Chipped: 'No', CrossCut: 'No', HandFlood: 'No', Notes: '' })
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('')
 
   const [readings, setReadings] = useState([])
 
   useEffect(() => {
-    getRinkTempHumidity()
+    getIceMaintenance()
       .then((data) => {
         console.log('Rink data:', data)
         setReadings(data)
@@ -24,8 +24,6 @@ function RinkTemperatureForm() {
   const validate = () => {
     const nextErrors = {}
     if (!form.date) nextErrors.date = 'Date is required.'
-    // if (!form.airTemp) nextErrors.airTemp = 'Air temperature is required.'
-    if (!form.iceTemp) nextErrors.iceTemp = 'Ice temperature is required.'
     setErrors(nextErrors)
     return Object.keys(nextErrors).length === 0
   }
@@ -38,12 +36,15 @@ function RinkTemperatureForm() {
     }
     try {
       const newReading = {
-        rinkTempHumidityDate: form.date,
-        temperature: Number(form.iceTemp),
-        humidity: Number(form.humidity)
+        iceMaintenanceDate: form.date,
+        edged: form.Edged,
+        chipped: form.Chipped,
+        crossCut: form.CrossCut,
+        handFlood: form.HandFlood,
+        notes: form.Notes.trim() === '' ? null : form.Notes.trim(),
       }
 
-      const saveReading = await addRinkTempHumidity(newReading)
+      const saveReading = await addIceMaintenance(newReading)
 
       setReadings((Current) => [
         saveReading, ...Current
@@ -57,7 +58,7 @@ function RinkTemperatureForm() {
   }
 
   const handleReset = () => {
-    setForm({ date: '', time: '', airTemp: '', iceTemp: '', humidity: '', comments: '' })
+    setForm({ date: '', Edged: 'No', Chipped: 'No', CrossCut: 'No', HandFlood: 'No', Notes: '' })
     setErrors({})
     setStatus('Form reset.')
   }
@@ -77,19 +78,42 @@ function RinkTemperatureForm() {
             <input type="date" value={form.date} onChange={(event) => setForm({ ...form, date: event.target.value })} />
             {errors.date && <small>{errors.date}</small>}
           </label>
-          {/* <label className="field">
-            <span>Air Temperature</span>
-            <input value={form.airTemp} onChange={(event) => setForm({ ...form, airTemp: event.target.value })} />
-            {errors.airTemp && <small>{errors.airTemp}</small>}
-          </label> */}
-          <label className="field">
-            <span>Ice Temperature</span>
-            <input value={form.iceTemp} onChange={(event) => setForm({ ...form, iceTemp: event.target.value })} />
-            {errors.iceTemp && <small>{errors.iceTemp}</small>}
+          <label className='field'>
+            <span>Edged</span>
+            <select value={form.Edged} onChange={(event) => setForm({...form, Edged: event.target.value})}>
+              <option value='Yes'>Yes</option>
+              <option value='No'>No</option>
+              <option value='Corners'>Corners</option>
+              <option value='Other'>Other</option>
+            </select>
           </label>
-          <label className="field">
-            <span>Humidity</span>
-            <input value={form.humidity} onChange={(event) => setForm({ ...form, humidity: event.target.value })} />
+          <label className='field'>
+            <span>Chipped</span>
+            <select value={form.Chipped} onChange={(event) => setForm({...form, Chipped: event.target.value})}>
+              <option value='Yes'>Yes</option>
+              <option value='No'>No</option>
+              <option value='Other'>Other</option>
+            </select>
+          </label>
+          <label className='field'>
+            <span>Cross Cut</span>
+            <select value={form.CrossCut} onChange={(event) => setForm({...form, CrossCut: event.target.value})}>
+              <option value='Yes'>Yes</option>
+              <option value='No'>No</option>
+              <option value='Other'>Other</option>
+            </select>
+          </label>
+          <label className='field'>
+            <span>Hand Flood</span>
+            <select value={form.HandFlood} onChange={(event) => setForm({...form, HandFlood: event.target.value})}>
+              <option value='Yes'>Yes</option>
+              <option value='No'>No</option>
+              <option value='Other'>Other</option>
+            </select>
+          </label>
+          <label className='field'>
+              <span>Notes</span>
+              <textarea value={form.Notes} onChange={(event) => setForm({...form, Notes: event.target.value})}/>
           </label>
           {status && <p className={`status ${status.includes('success') ? 'status--success' : 'status--error'}`}>{status}</p>}
           <div className="form-actions">
@@ -100,7 +124,7 @@ function RinkTemperatureForm() {
         </form>
       </FormCard>
 
-      <section className="card">
+      {/* <section className="card">
         <h3>Recent Readings</h3>
         <div className="maintenance-list">
           {readings.map((reading) => (
@@ -114,9 +138,9 @@ function RinkTemperatureForm() {
             <span className="badge">Stable</span>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
 
-export default RinkTemperatureForm
+export default IceMaintenanceForm

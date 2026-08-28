@@ -92,7 +92,7 @@ end
 go
 select column_name
 from INFORMATION_SCHEMA.COLUMNS
-where TABLE_NAME = 'Natural_Gas_Stats';
+where TABLE_NAME = 'Rink_Temp_Humidity';
 
 SELECT
     COLUMN_NAME,

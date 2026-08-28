@@ -73,6 +73,21 @@ CREATE TABLE [Maintenance_Category] (
   PRIMARY KEY ([Maintenance_Category_ID])
 );
 
+CREATE TABLE [Zam_Maintenance_Item] (
+  [Zam_Maintenance_Item_ID] INT NOT NULL IDENTITY(1,1),
+  [Zam_Maintenance_ID] INT NOT NULL,
+  [Maintenance_Checks_and_Repairs_ID] INT NOT NULL,
+
+  PRIMARY KEY ([Zam_Maintenance_Item_ID]),
+
+  FOREIGN KEY ([Zam_Maintenance_ID])
+    REFERENCES [Zam_Maintenance]([Zam_Maintenance_ID]),
+
+  FOREIGN KEY ([Maintenance_Checks_and_Repairs_ID])
+    REFERENCES [Maintenance_Checks_and_Repairs]
+      ([Maintenance_Checks_and_Repairs_ID])
+);
+
 CREATE TABLE [Maintenance_Checks_and_Repairs] (
   [Maintenance_Checks_and_Repairs_ID] Int NOT NULL identity(1,1),
   [Checks_and_Repairs] Varchar(60),
@@ -91,33 +106,29 @@ CREATE TABLE [Zam_Maintenance] (
   [Blade_Width] Decimal(5,4),
   [Zamboni_ID] Int,
   [Worker_ID] Int,
-  [Maintenance_Checks_and_Repairs_ID] Int NOT NULL,
   PRIMARY KEY ([Zam_Maintenance_ID]),
   CONSTRAINT [FK_Zam_Maintenance_Worker_ID]
     FOREIGN KEY ([Worker_ID])
       REFERENCES [Worker]([Worker_ID]),
   CONSTRAINT [FK_Zam_Maintenance_Zamboni_ID]
     FOREIGN KEY ([Zamboni_ID])
-      REFERENCES [Zamboni]([Zamboni_ID]),
-  CONSTRAINT [FK_Zam_Maintenance_Maintenance_Checks_and_Repairs_ID]
-    FOREIGN KEY ([Maintenance_Checks_and_Repairs_ID])
-      REFERENCES [Maintenance_Checks_and_Repairs]([Maintenance_Checks_and_Repairs_ID])
+      REFERENCES [Zamboni]([Zamboni_ID])
 );
 
 CREATE TABLE [Facility_HVAC_Filter] (
   [Facility_HVAC_Filter_ID] Int NOT NULL identity(1,1),
   [Facility_Change_Date] Date NOT NULL,
-  [20x25_Changed] varchar(5) not null,
-  [20x20_Changed] varchar(5) not null,
-  [16x22_Changed] varchar(5) not null,
+  [20x25_Changed] varchar(20) not null,
+  [20x20_Changed] varchar(20) not null,
+  [16x22_Changed] varchar(20) not null,
   [20x25_Inventory] Int NOT NULL,
   [20x20_Inventory] Int NOT NULL,
   [16x22_Inventory] Int NOT NULL,
   [Notes] Varchar(Max),
   [Worker_ID] Int,
-  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x25_Status check ([20x25_Changed] IN ('Yes', 'No', 'Down', 'Fixed')),
-  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Down', 'Fixed')),
-  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_16x22_Status check ([16x22_Changed] IN ('Yes', 'No', 'Down', 'Fixed')),
+  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x25_Status check ([20x25_Changed] IN ('Yes', 'No', 'Down', 'Fixed', 'Fixed + Changed')),
+  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Down', 'Fixed', 'Fixed + Changed')),
+  CONSTRAINT Chk_Facility_HVAC_Filter_Fac_16x22_Status check ([16x22_Changed] IN ('Yes', 'No', 'Down', 'Fixed', 'Fixed + Changed')),
   PRIMARY KEY ([Facility_HVAC_Filter_ID]),
   CONSTRAINT [FK_Facility_HVAC_Filter_Worker_ID]
     FOREIGN KEY ([Worker_ID])
@@ -146,7 +157,7 @@ CREATE TABLE [Ice_Maintenance] (
   [Notes] Varchar(Max),
   [Worker_ID] Int,
   PRIMARY KEY ([Ice_Maintenance_ID]),
-  CONSTRAINT Chk_Ice_Maintenance_Edged_Status check (Edged IN ('Yes', 'Corners', 'Other')),
+  CONSTRAINT Chk_Ice_Maintenance_Edged_Status check (Edged IN ('Yes', 'No', 'Corners', 'Other')),
   CONSTRAINT Chk_Ice_Maintenance_Chipped_Status check (Chipped IN ('Yes', 'No', 'Other')),
   CONSTRAINT Chk_Ice_Maintenance_Cross_Cut_Status check (Cross_Cut IN ('Yes', 'No', 'Other')),
   CONSTRAINT Chk_Ice_Maintenance_Hand_Flood_Status check (Hand_Flood IN ('Yes', 'No', 'Other')),
@@ -158,17 +169,17 @@ CREATE TABLE [Ice_Maintenance] (
 CREATE TABLE [Rink_Des_HVAC_Filter] (
   [Rink_HVAC_Filter_ID] Int NOT NULL identity(1,1),
   [Rink_Change_Date] Date NOT NULL,
-  [20x20_Changed] Varchar(5),
-  [24x24_Changed] Varchar(5),
-  [18x24_Changed] Varchar(5),
+  [20x20_Changed] Varchar(20),
+  [24x24_Changed] Varchar(20),
+  [18x24_Changed] Varchar(20),
   [20x20_Inventory] Int,
   [24x24_Inventory] Int,
   [18x24_Inventory] Int,
   [Notes] Varchar(Max),
   [Worker_ID] Int,
-  CONSTRAINT Chk_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Down', 'Fixed')),
-  CONSTRAINT Chk_24x24_Status check ([24x24_Changed] IN ('Yes', 'No', 'Down', 'Fixed')),
-  CONSTRAINT Chk_18x24_Status check ([18x24_Changed] IN ('Yes', 'No', 'Down', 'Fixed')),
+  CONSTRAINT Chk_Rink_Des_HVAC_Filter_20x20_Status check ([20x20_Changed] IN ('Yes', 'No', 'Down', 'Fixed', 'Fixed + Changed')),
+  CONSTRAINT Chk_Rink_Des_HVAC_Filter_24x24_Status check ([24x24_Changed] IN ('Yes', 'No', 'Down', 'Fixed', 'Fixed + Changed')),
+  CONSTRAINT Chk_Rink_Des_HVAC_Filter_18x24_Status check ([18x24_Changed] IN ('Yes', 'No', 'Down', 'Fixed', 'Fixed + Changed')),
   PRIMARY KEY ([Rink_HVAC_Filter_ID]),
   CONSTRAINT [FK_Rink_HVAC_Filter_Worker_ID]
     FOREIGN KEY ([Worker_ID])
@@ -178,7 +189,7 @@ CREATE TABLE [Rink_Des_HVAC_Filter] (
 CREATE TABLE [Rink_Misc_Maintenance] (
   [Rink_Misc_Maintenance_ID] Int NOT NULL identity(1,1),
   [Rink_Misc_Maintenance_Date] Date NOT NULL,
-  [Task] Varchar(35),
+  [Task] Varchar(Max),
   [Notes] Varchar(Max),
   [Worker_ID] Int,
   PRIMARY KEY ([Rink_Misc_Maintenance_ID]),
