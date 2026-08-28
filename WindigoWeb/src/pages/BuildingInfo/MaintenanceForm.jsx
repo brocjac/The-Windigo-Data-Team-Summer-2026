@@ -4,6 +4,8 @@ import FacilityHvacForm from './forms/FacilityHvacForm'
 import RinkHvacForm from './forms/RinkDesHvacForm'
 import IceMaintenanceForm from './forms/IceMaintenanceForm'
 import MiscRinkMaintenanceForm from './forms/MiscRinkMaintenanceForm'
+import ZamMaintenance from './forms/ZamMaintenanceForm'
+import ZamSchedual from './forms/ZamScheduleForm'
 
 function MaintenanceForm() {
   const [formType, setFormType] = useState('facility')
@@ -23,6 +25,8 @@ function MaintenanceForm() {
             <option value="rink">Rink Dec HVAC Filter Change</option>
             <option value="iceMaintenance">Ice Maintenance</option>
             <option value="miscRinkMaintenance">Miscellaneous Rink Maintenance</option>
+            <option value="zamMaintenance">Zamboni Maintenance</option>
+            <option value="zamSchedual">Zamboni Schedualer Form</option>
           </select>
         </label>
         {formType === 'facility' && (
@@ -36,6 +40,12 @@ function MaintenanceForm() {
         )}
         {formType === 'miscRinkMaintenance' && (
           <MiscRinkMaintenanceForm/>
+        )}
+        {formType === 'zamMaintenance' && (
+          <ZamMaintenance/>
+        )}
+        {formType === 'zamSchedual' && (
+          <ZamSchedual/>
         )}
       </FormCard>
     </div>

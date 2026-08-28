@@ -73,21 +73,6 @@ CREATE TABLE [Maintenance_Category] (
   PRIMARY KEY ([Maintenance_Category_ID])
 );
 
-CREATE TABLE [Zam_Maintenance_Item] (
-  [Zam_Maintenance_Item_ID] INT NOT NULL IDENTITY(1,1),
-  [Zam_Maintenance_ID] INT NOT NULL,
-  [Maintenance_Checks_and_Repairs_ID] INT NOT NULL,
-
-  PRIMARY KEY ([Zam_Maintenance_Item_ID]),
-
-  FOREIGN KEY ([Zam_Maintenance_ID])
-    REFERENCES [Zam_Maintenance]([Zam_Maintenance_ID]),
-
-  FOREIGN KEY ([Maintenance_Checks_and_Repairs_ID])
-    REFERENCES [Maintenance_Checks_and_Repairs]
-      ([Maintenance_Checks_and_Repairs_ID])
-);
-
 CREATE TABLE [Maintenance_Checks_and_Repairs] (
   [Maintenance_Checks_and_Repairs_ID] Int NOT NULL identity(1,1),
   [Checks_and_Repairs] Varchar(60),
@@ -113,6 +98,21 @@ CREATE TABLE [Zam_Maintenance] (
   CONSTRAINT [FK_Zam_Maintenance_Zamboni_ID]
     FOREIGN KEY ([Zamboni_ID])
       REFERENCES [Zamboni]([Zamboni_ID])
+);
+
+CREATE TABLE [Zam_Maintenance_Item] (
+  [Zam_Maintenance_Item_ID] INT NOT NULL IDENTITY(1,1),
+  [Zam_Maintenance_ID] INT NOT NULL,
+  [Maintenance_Checks_and_Repairs_ID] INT NOT NULL,
+
+  PRIMARY KEY ([Zam_Maintenance_Item_ID]),
+
+  FOREIGN KEY ([Zam_Maintenance_ID])
+    REFERENCES [Zam_Maintenance]([Zam_Maintenance_ID]),
+
+  FOREIGN KEY ([Maintenance_Checks_and_Repairs_ID])
+    REFERENCES [Maintenance_Checks_and_Repairs]
+      ([Maintenance_Checks_and_Repairs_ID])
 );
 
 CREATE TABLE [Facility_HVAC_Filter] (

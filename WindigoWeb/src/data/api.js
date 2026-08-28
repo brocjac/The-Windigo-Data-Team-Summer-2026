@@ -79,8 +79,11 @@ export const addRinkMiscMaintenance = (reading) =>
 export const getZambonis = () =>
     apiGet('Zamboni')
 
-export const getMaintenanceCategories = () =>
-    apiGet('MaintenanceCategories')
+export const getMaintenanceCategory = () =>
+    apiGet('MaintenanceCategory')
+
+export const getMaintenanceChecks = () =>
+    apiGet('MaintenanceChecksAndRepair')
 
 export const getMaintenanceChecksByCategory = (categoryId) =>
     apiGet(`MaintenanceChecksByCategory/category/${categoryId}`)
@@ -90,3 +93,10 @@ export const getZamMaintenance = () =>
 
 export const addZamMaintenance = (record) =>
     apiPost('ZamMaintenance', record)
+
+
+export const getZamSchedules = () => 
+    apiGet('ZamSchedule')
+
+export const addZamSchedule = (record) =>
+  apiPost('ZamSchedule', record)

@@ -122,7 +122,7 @@ function RinkHvacFilter() {
       <div className="page__header">
         <div>
           <p className="eyebrow">Forms</p>
-          <h2>Rink Temperature Form</h2>
+          <h2>Rink Des HVAC Form</h2>
         </div>
       </div>
       <FormCard title="Rink HVAC Filters" description="Record filter changes and update filter inventory.">
