@@ -95,8 +95,20 @@ export const addZamMaintenance = (record) =>
     apiPost('ZamMaintenance', record)
 
 
-export const getZamSchedules = () => 
+export const getZamSchedule = () => 
     apiGet('ZamSchedule')
 
 export const addZamSchedule = (record) =>
   apiPost('ZamSchedule', record)
+
+export const getGasStats = () => 
+    apiGet('NaturalGasStats')
+
+export const addGasStats = (record) =>
+  apiPost('NaturalGasStats', record)
+
+export const getElectricityStat = () => 
+    apiGet('ElectricityStats')
+
+export const addElectricityStat = (record) =>
+  apiPost('ElectricityStats', record)

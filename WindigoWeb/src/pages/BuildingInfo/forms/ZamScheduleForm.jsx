@@ -3,7 +3,7 @@ import { FiSave, FiRotateCcw } from 'react-icons/fi'
 import FormCard from '../../../components/FormCard'
 import {
   getZambonis,
-  getZamSchedules,
+  getZamSchedule,
   addZamSchedule
 } from '../../../data/api'
 
@@ -28,7 +28,7 @@ function ZamScheduleForm() {
           scheduleData
         ] = await Promise.all([
           getZambonis(),
-          getZamSchedules()
+          getZamSchedule()
         ])
 
         setZambonis(zamboniData)

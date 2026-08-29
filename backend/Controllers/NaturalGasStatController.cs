@@ -6,11 +6,11 @@ namespace backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class NaturalGasStatController : ControllerBase
+public class NaturalGasStatsController : ControllerBase
 {
     private readonly ThePondsBuildingDbContext _context;
 
-    public NaturalGasStatController(ThePondsBuildingDbContext context)
+    public NaturalGasStatsController(ThePondsBuildingDbContext context)
     {
         _context = context;
     }
