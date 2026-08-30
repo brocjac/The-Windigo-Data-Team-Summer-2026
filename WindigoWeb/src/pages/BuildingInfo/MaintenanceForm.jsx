@@ -6,6 +6,7 @@ import IceMaintenanceForm from './forms/IceMaintenanceForm'
 import MiscRinkMaintenanceForm from './forms/MiscRinkMaintenanceForm'
 import ZamMaintenance from './forms/ZamMaintenanceForm'
 import ZamSchedual from './forms/ZamScheduleForm'
+import GlycolMachine from './forms/GlycolMachineForm'
 
 function MaintenanceForm() {
   const [formType, setFormType] = useState('facility')
@@ -27,6 +28,7 @@ function MaintenanceForm() {
             <option value="miscRinkMaintenance">Miscellaneous Rink Maintenance</option>
             <option value="zamMaintenance">Zamboni Maintenance</option>
             <option value="zamSchedual">Zamboni Schedualer Form</option>
+            <option value="glycolMachine">Glycol Machine Form</option>
           </select>
         </label>
         {formType === 'facility' && (
@@ -46,6 +48,9 @@ function MaintenanceForm() {
         )}
         {formType === 'zamSchedual' && (
           <ZamSchedual/>
+        )}
+        {formType === 'glycolMachine' && (
+          <GlycolMachine/>
         )}
       </FormCard>
     </div>

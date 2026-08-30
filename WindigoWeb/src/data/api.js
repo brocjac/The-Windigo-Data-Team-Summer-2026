@@ -111,4 +111,10 @@ export const getElectricityStat = () =>
     apiGet('ElectricityStats')
 
 export const addElectricityStat = (record) =>
-  apiPost('ElectricityStats', record)
+    apiPost('ElectricityStats', record)
+
+export const getGlycolMachine = () => 
+    apiGet('GlycolMachine')
+
+export const addGlycolMachine = (record) =>
+    apiPost('GlycolMachine', record)
