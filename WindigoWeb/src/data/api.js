@@ -1,35 +1,55 @@
 const API_URL = "http://localhost:5028/api";
 
 async function apiGet(endpoint) {
-    const response = await fetch(`${API_URL}/${endpoint}`);
+  const token = localStorage.getItem('token')
 
-    if (!response.ok) {
-        throw new error(`API request failed: ${response.status}`);
+  const response = await fetch(`${API_URL}/${endpoint}`, {
+    headers: {
+      ...(token && {
+        Authorization: `Bearer ${token}`
+      })
     }
+  })
 
-    return response.json();
+  if (!response.ok) {
+    const text = await response.text()
+    console.error('API response:', text)
+
+    throw new Error(
+      `API request failed: ${response.status} - ${text}`
+    )
+  }
+
+  return response.json()
 }
 
 async function apiPost(endpoint, data) {
-    const response = await fetch(`${API_URL}/${endpoint}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    });
+  const token = localStorage.getItem('token')
 
-    if (!response.ok) {
-        const errorText = await response.text()
+  const response = await fetch(`${API_URL}/${endpoint}`, {
+    method: 'POST',
 
-        console.error('API response:', errorText)
+    headers: {
+      'Content-Type': 'application/json',
 
-        throw new Error(
-            `API request failed: ${response.status} - ${errorText}`
-        )
-    }
+      ...(token && {
+        Authorization: `Bearer ${token}`
+      })
+    },
 
-    return response.json();
+    body: JSON.stringify(data)
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    console.error('API response:', text)
+
+    throw new Error(
+      `API request failed: ${response.status} - ${text}`
+    )
+  }
+
+  return response.json()
 }
 
 export const getRinkTempHumidity = () =>
@@ -118,3 +138,9 @@ export const getGlycolMachine = () =>
 
 export const addGlycolMachine = (record) =>
     apiPost('GlycolMachine', record)
+
+export const loginWorker = (record) =>
+  apiPost('Auth/login', record)
+
+export const registerWorker = (record) =>
+    apiPost('Auth/register', record)

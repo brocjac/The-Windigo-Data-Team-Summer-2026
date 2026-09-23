@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ZamMaintenanceController : ControllerBase
@@ -25,9 +25,17 @@ public class ZamMaintenanceController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(List<ZamMaintenanceRequest> requests)
     {
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
         var saved = new List<object>();
 
         foreach (var request in requests){
+
             var maintenance = new ZamMaintenance
             {
                 ZamMaintenanceDate = request.ZamMaintenanceDate,
@@ -35,7 +43,7 @@ public class ZamMaintenanceController : ControllerBase
                 BladeInventory = request.BladeInventory,
                 BladeWidth = request.BladeWidth,
                 ZamboniId = request.ZamboniId,
-                WorkerId = request.WorkerId
+                WorkerId = workerId
             };
             _context.ZamMaintenances.Add(maintenance);
             await _context.SaveChangesAsync();

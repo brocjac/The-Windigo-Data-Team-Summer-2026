@@ -29,12 +29,20 @@ public class ZamScheduleController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(ZamScheduleRequest request)
     {
+
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
         var schedule = new ZamSchedule
         {
             ZamScheduleDate = request.ZamScheduleDate,
             Notes = request.Notes,
             ZamboniId = request.ZamboniId,
-            WorkerId = request.WorkerId
+            WorkerId = workerId
         };
 
         _context.ZamSchedules.Add(schedule);

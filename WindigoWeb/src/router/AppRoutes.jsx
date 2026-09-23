@@ -1,6 +1,9 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
+import Login from '../pages/Login/Login'
+import Register from '../pages/Login/Registration'
+import ProtectedRoute from '../components/ProtectedRoute'
 
 const HomePage = lazy(() => import('../pages/Home/HomePage'))
 const TeamsDashboard = lazy(() => import('../pages/Teams/TeamsDashboard'))
@@ -41,7 +44,13 @@ function AppRoutes() {
     <BrowserRouter>
       <Suspense fallback={<PageLoading />}>
         <Routes>
-          <Route element={<MainLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route element={
+            <ProtectedRoute>
+              <MainLayout/>
+            </ProtectedRoute>
+          }>
             <Route path="/" element={<HomePage />} />
             <Route path="/teams" element={<TeamsDashboard />} />
             <Route path="/ice-maintenance" element={<IceMaintenanceDashboard />} />

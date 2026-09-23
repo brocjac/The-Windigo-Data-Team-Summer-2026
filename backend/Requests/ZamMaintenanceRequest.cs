@@ -12,7 +12,5 @@ public class ZamMaintenanceRequest
 
     public int ZamboniId { get; set; }
 
-    public int? WorkerId { get; set; }
-
     public List<int> MaintenanceItemIds { get; set; } = new();
 }

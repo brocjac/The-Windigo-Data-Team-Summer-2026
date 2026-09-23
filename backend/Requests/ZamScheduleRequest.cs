@@ -8,5 +8,4 @@ public class ZamScheduleRequest
 
     public int? ZamboniId { get; set; }
 
-    public int? WorkerId { get; set; }
 }

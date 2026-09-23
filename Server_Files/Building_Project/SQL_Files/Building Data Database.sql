@@ -10,6 +10,8 @@ CREATE TABLE [Worker] (
     [Password_Hash] VARCHAR(255) NOT NULL,
     [Account_Status] VARCHAR(20) NOT NULL
         CONSTRAINT DF_Worker_Account_Status DEFAULT 'pending',
+    [Role] VARCHAR(20) NOT NULL
+        CONSTRAINT DF_Worker_Role DEFAULT 'worker',
     [Created_At] DATETIME2 NOT NULL
         CONSTRAINT DF_Worker_Created_At DEFAULT SYSDATETIME(),
     [Updated_At] DATETIME2 NOT NULL
@@ -23,6 +25,11 @@ CREATE TABLE [Worker] (
             'active',
             'suspended',
             'deleted'
+        )),
+    CONSTRAINT Chk_Worker_Role
+        CHECK ([Role] IN (
+            'worker',
+            'admin'
         ))
 );
 
