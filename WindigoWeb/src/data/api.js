@@ -11,6 +11,15 @@ async function apiGet(endpoint) {
     }
   })
 
+  if (response.status === 401) {
+    window.dispatchEvent(new Event('auth:expired'))
+    throw new Error('Session expired')
+  }
+
+  if (!response.ok) {
+    throw new Error(`API request failed: ${response.status}`)
+  }
+
   if (!response.ok) {
     const text = await response.text()
     console.error('API response:', text)

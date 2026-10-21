@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ElectricityStatsController : ControllerBase
@@ -23,8 +25,18 @@ public class ElectricityStatsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(ElectricityStat reading)
     {
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
+        reading.WorkerId = workerId;
+
         _context.ElectricityStats.Add(reading);
         await _context.SaveChangesAsync();
+
         return Ok(reading);
     }
 }

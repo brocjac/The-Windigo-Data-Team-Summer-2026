@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class IceDepthReadings : ControllerBase
@@ -21,10 +23,19 @@ public class IceDepthReadings : ControllerBase
         return Ok(data);
     }
     [HttpPost]
-    public async Task<IActionResult> Create(List<IceDepthReading> readings)
+    public async Task<IActionResult> Create(IceDepthReading reading)
     {
-        _context.IceDepthReadings.AddRange(readings);
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
+        reading.WorkerId = workerId;
+
+        _context.IceDepthReadings.AddRange(reading);
         await _context.SaveChangesAsync();
-        return Ok(readings);
+        return Ok(reading);
     }
 }

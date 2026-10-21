@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class GlycolMachineController : ControllerBase
@@ -23,6 +25,15 @@ public class GlycolMachineController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(GlycolMachine reading)
     {
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
+        reading.WorkerId = workerId;
+
         _context.GlycolMachines.Add(reading);
         await _context.SaveChangesAsync();
         return Ok(reading);

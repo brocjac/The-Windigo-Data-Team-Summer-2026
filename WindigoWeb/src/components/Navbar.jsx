@@ -1,6 +1,15 @@
 import { FiBell, FiSettings, FiLogOut, FiMenu, RiSwordFill } from './Icons'
+import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom';
 
 function Navbar({ onToggleSidebar }) {
+  const {worker, logout} = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login', { replace: true })
+  }
   return (
     <header className="navbar">
       <div className="navbar__brand">
@@ -23,10 +32,8 @@ function Navbar({ onToggleSidebar }) {
           <FiSettings />
         </button>
         <div className="navbar__user">
-          <span>Coach Rivera</span>
-          <button className="icon-button" type="button" aria-label="Logout">
-            <FiLogOut />
-          </button>
+          <span>Welcome, {worker?.firstName} {worker?.lastName}</span>
+          <button className="icon-button" type="button" aria-label="Logout" onClick={handleLogout}><FiLogOut/></button>
         </div>
       </div>
     </header>

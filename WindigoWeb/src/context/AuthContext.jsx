@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext(null)
 
@@ -36,6 +36,18 @@ export function AuthProvider({children}) {
     setToken(null)
     setWorker(null)
   }
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      logout()
+    }
+
+    window.addEventListener('auth:expired', handleUnauthorized)
+
+    return () => {
+      window.removeEventListener('auth:expired', handleUnauthorized)
+    }
+  }, [])
 
   return (
     <AuthContext.Provider value={{ worker, token, isLoggedIn: !!token, login, logout}}>

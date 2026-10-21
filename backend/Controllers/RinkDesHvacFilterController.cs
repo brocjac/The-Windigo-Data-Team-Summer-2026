@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class RinkDesHvacFilterController : ControllerBase
@@ -26,6 +28,13 @@ public class RinkDesHvacFilterController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(RinkHvacRequest request)
     {
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
         // Get the most recent HVAC record
         var previousRecord = await _context.RinkDesHvacFilters
             .AsNoTracking()
@@ -114,6 +123,8 @@ public class RinkDesHvacFilterController : ControllerBase
         var newRecord = new RinkDesHvacFilter
         {
             RinkChangeDate = request.RinkChangeDate,
+
+            WorkerId = workerId,
 
             _24x24Changed = NormalizeStatus(request.Changed24x24),
             _20x20Changed = NormalizeStatus(request.Changed20x20),

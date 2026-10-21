@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class FacilityHvacFilterController : ControllerBase
@@ -26,6 +28,20 @@ public class FacilityHvacFilterController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(FacilityHvacRequest request)
     {
+        var workerIdClaim = User.FindFirst("WorkerId")?.Value;
+
+        if (!int.TryParse(workerIdClaim, out int workerId))
+        {
+            return Unauthorized();
+        }
+
+        if (request.Inventory16x22Amount < 0 ||
+            request.Inventory20x20Amount < 0 ||
+            request.Inventory20x25Amount < 0)
+        {
+            return BadRequest("Inventory amounts cannot be negative.");
+        }
+
         // Get the most recent HVAC record
         var previousRecord = await _context.FacilityHvacFilters
             .AsNoTracking()
@@ -115,6 +131,8 @@ public class FacilityHvacFilterController : ControllerBase
         {
             FacilityChangeDate = request.FacilityChangeDate,
 
+            WorkerId = workerId,
+
             _20x25Changed = NormalizeStatus(request.Changed20x25),
             _20x20Changed = NormalizeStatus(request.Changed20x20),
             _16x22Changed = NormalizeStatus(request.Changed16x22),
@@ -183,13 +201,6 @@ public class FacilityHvacFilterController : ControllerBase
 
     private static int ApplyInventoryAdjustment(int CurrentInventory, string? mode, int amount)
     {
-        if (amount < 0)
-        {
-            throw new ArgumentException(
-                "Inventory amount cannot be negative."
-            );
-        }
-
         // Add newly delivered filters
         if (string.Equals(mode, "add", StringComparison.OrdinalIgnoreCase))
         {
